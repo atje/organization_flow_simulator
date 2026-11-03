@@ -1,3 +1,7 @@
+## <small>1.1.7 (2026-11-03)</small>
+
+* chore: allow manual update of node deps ([99b76c7](https://github.com/atje/organization_flow_simulator/commit/99b76c7))
+
 ## <small>1.1.6 (2026-11-03)</small>
 
 * Merge branch 'main' of https://github.com/atje/organization_flow_simulator ([9d19f44](https://github.com/atje/organization_flow_simulator/commit/9d19f44))
