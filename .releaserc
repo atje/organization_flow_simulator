@@ -14,18 +14,17 @@
     [
       "@semantic-release/commit-analyzer",
       {
-        "preset": "angular",
         "releaseRules": [
-          { "type": "feat", "scope": "*", "release": "minor" },
-          { "type": "fix", "scope": "*", "release": "patch" },
-          { "type": "perf", "scope": "*", "release": "patch" },
-          { "type": "docs", "scope": "*", "release": "patch" },
-          { "type": "style", "scope": "*", "release": "patch" },
-          { "type": "refactor", "scope": "*", "release": "patch" },
-          { "type": "test", "scope": "*", "release": "patch" },
-          { "type": "chore", "scope": "*", "release": "patch" },
-          { "type": "ci", "scope": "*", "release": "patch" },
-          { "type": "no-release", "scope": "*", "release": false }
+          { "type": "feat", "release": "minor" },
+          { "type": "fix", "release": "patch" },
+          { "type": "perf", "release": "patch" },
+          { "type": "docs", "release": "patch" },
+          { "type": "style", "release": "patch" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "test",  "release": "patch" },
+          { "type": "chore", "release": "patch" },
+          { "type": "ci", "release": "patch" },
+          { "type": "no-release", "release": false }
         ],
           "scope": [
             { "scope": "no-release", "release": false }
@@ -33,11 +32,8 @@
         }
     ],
     [
-      "@semantic-release/release-notes-generator",
-      {
-        "preset": "angular"
-      }
-    ],
+      "@semantic-release/release-notes-generator"
+      ],
     [
       "@semantic-release/npm",
       {
