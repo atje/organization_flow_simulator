@@ -11,11 +11,39 @@
     }
   ],
   "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    ["@semantic-release/npm", {
-      "npmPublish": false
-    }],
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "releaseRules": [
+          { "type": "feat", "scope": "*", "release": "minor" },
+          { "type": "fix", "scope": "*", "release": "patch" },
+          { "type": "perf", "scope": "*", "release": "patch" },
+          { "type": "docs", "scope": "*", "release": "patch" },
+          { "type": "style", "scope": "*", "release": "patch" },
+          { "type": "refactor", "scope": "*", "release": "patch" },
+          { "type": "test", "scope": "*", "release": "patch" },
+          { "type": "chore", "scope": "*", "release": "patch" },
+          { "type": "ci", "scope": "*", "release": "patch" },
+          { "type": "no-release", "scope": "*", "release": false }
+        ],
+          "scope": [
+            { "scope": "no-release", "release": false }
+          ]
+        }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits"
+      }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
+    ],
     "@semantic-release/github",
     "semantic-release-ado",
     [
@@ -54,7 +82,7 @@
           "CHANGELOG.md",
           "web/app.js"
         ],
-        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
       }
     ]
   ]
