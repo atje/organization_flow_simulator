@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/atje/organization_flow_simulator/compare/v1.0.1...v1.1.0) (2026-11-03)
+
+
+### Features
+
+* Simulation button change, and feature chart addition ([fe3a2f1](https://github.com/atje/organization_flow_simulator/commit/fe3a2f1906d09e5aab846d0a9548d57193ffc79c))
+
 ## [1.0.2-beta.2](https://github.com/atje/organization_flow_simulator/compare/v1.0.2-beta.1...v1.0.2-beta.2) (2026-10-15)
 
 
