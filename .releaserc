@@ -14,7 +14,7 @@
     [
       "@semantic-release/commit-analyzer",
       {
-        "preset": "conventionalcommits",
+        "preset": "angular",
         "releaseRules": [
           { "type": "feat", "scope": "*", "release": "minor" },
           { "type": "fix", "scope": "*", "release": "patch" },
@@ -35,7 +35,7 @@
     [
       "@semantic-release/release-notes-generator",
       {
-        "preset": "conventionalcommits"
+        "preset": "angular"
       }
     ],
     [
