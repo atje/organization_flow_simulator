@@ -1,3 +1,7 @@
+## <small>1.1.3 (2026-11-03)</small>
+
+* chore: commit format change to conventional ([57f640e](https://github.com/atje/organization_flow_simulator/commit/57f640e))
+
 ## [1.1.2](https://github.com/atje/organization_flow_simulator/compare/v1.1.1...v1.1.2) (2026-11-03)
 
 ## [1.1.1](https://github.com/atje/organization_flow_simulator/compare/v1.1.0...v1.1.1) (2026-11-03)
