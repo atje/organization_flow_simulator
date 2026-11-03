@@ -1,3 +1,12 @@
+## <small>1.1.5 (2026-11-03)</small>
+
+* docs(no-release): Update README with deployment details ([956831a](https://github.com/atje/organization_flow_simulator/commit/956831a))
+
+## <small>1.1.4 (2026-11-03)</small>
+
+* Merge branch 'main' of https://github.com/atje/organization_flow_simulator ([2a0ff8b](https://github.com/atje/organization_flow_simulator/commit/2a0ff8b))
+* ci: page deployment made dependent on successful release update ([d5ea35f](https://github.com/atje/organization_flow_simulator/commit/d5ea35f))
+
 ## <small>1.1.3 (2026-11-03)</small>
 
 * chore: commit format change to conventional ([57f640e](https://github.com/atje/organization_flow_simulator/commit/57f640e))
