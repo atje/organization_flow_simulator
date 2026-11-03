@@ -1,3 +1,8 @@
+## <small>1.1.6 (2026-11-03)</small>
+
+* Merge branch 'main' of https://github.com/atje/organization_flow_simulator ([9d19f44](https://github.com/atje/organization_flow_simulator/commit/9d19f44))
+* ci: add github action to update node dependencies ([5fde0f3](https://github.com/atje/organization_flow_simulator/commit/5fde0f3))
+
 ## <small>1.1.5 (2026-11-03)</small>
 
 * docs(no-release): Update README with deployment details ([956831a](https://github.com/atje/organization_flow_simulator/commit/956831a))
