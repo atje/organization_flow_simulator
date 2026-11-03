@@ -17,7 +17,6 @@
             Change the organization structure, set simulation parameters, then watch work move through each stage.<br> 
           </p>
         </div>
-        <div id="status" class="status status-idle" role="status">Ready</div>
       </header>
 
 <button id="simulation-info-button" class="collapsible-button">About (click to expand)</button>
@@ -74,7 +73,7 @@
               <option value="10">10x</option>
             </select>
           </label>
-          <div class="button-row">
+          <div class="floating-button-row">
             <button type="submit" class="primary">Start simulation</button>
             <button id="pause-button" type="button" disabled>Pause</button>
             <button id="reset-button" type="button">Reset</button>
@@ -102,7 +101,6 @@
             <p class="eyebrow">Live view</p>
             <h2 id="flow-heading">Process flow</h2>
           </div>
-          <div class="clock">Day <strong id="simulation-time">0.0</strong></div>
           <div>
             <button id="toggle-simulation-panel-button" type="button">Hide View</button>
           </div>
@@ -140,15 +138,19 @@
             <span><i class="legend-dot legend-complete"></i>Completed</span>
             <span class="bubble-legend"><i class="bubble-dot bubble-small">1</i><i class="bubble-dot bubble-large">4</i>Work items per point</span>
           </div>
-          <div class="clock">Day <strong id="chart-simulation-time">0.0</strong></div>
+          <div class="floating-status-row">
+            <div class="clock">Day <strong id="simulation-time">0.0</strong></div>
+            <div id="status" class="status status-idle" role="status">Ready</div>
+          </div>
         </div>
         <svg
           id="workitem-timing-chart"
           class="workitem-timing-chart"
-          viewBox="0 0 760 420"
           role="img"
           aria-label="Work item lead time on the horizontal axis and processing time divided by lead time on the vertical axis. Bubble size represents work item count."
         ></svg>
+        <canvas id="myChart" class="myChart"></canvas>
+
       </section>
 
       <p class="footer-note">
@@ -157,6 +159,7 @@
         </small>
       </p>
     </main>
+    <script src= "https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
     <script type="module" src="./app.js"></script>
   </body>
 </html>

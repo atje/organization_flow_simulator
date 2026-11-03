@@ -1,4 +1,4 @@
-import { renderTimingChart } from "./charts.js";
+import { renderTimingChart, renderFeatureOutputChart } from "./charts.js";
 
 let nextStageId = 1;
 let nextTeamId = 1;
@@ -67,7 +67,6 @@ const elements = {
   pause: document.querySelector("#pause-button"),
   reset: document.querySelector("#reset-button"),
   time: document.querySelector("#simulation-time"),
-  chartTime: document.querySelector("#chart-simulation-time"),
   completed: document.querySelector("#completed-count"),
   inProcess: document.querySelector("#in-process-count"),
   average: document.querySelector("#average-lead-time"),
@@ -773,7 +772,6 @@ function percentile(values, fraction) {
 
 function render() {
   elements.time.textContent = state.simulationTime.toFixed(1);
-  elements.chartTime.textContent = state.simulationTime.toFixed(1);
   elements.completed.textContent = state.leadTimes.length;
   elements.inProcess.textContent = state.workItemRecords.filter((workItem) => !workItem.completed).length;
   const average = state.leadTimes.length
@@ -783,6 +781,7 @@ function render() {
   const p95 = percentile(state.leadTimes, 0.95);
   elements.p95.textContent = p95 === null ? "—" : `${p95.toFixed(1)} d`;
   renderTimingChart(elements.timingChart, state.workItemRecords, state.simulationTime);
+  renderFeatureOutputChart("myChart", state.workItemRecords, state.simulationTime);
 
   const layout = calculateTeamLayout(state.teams);
   const canvas = document.createElement("div");

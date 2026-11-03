@@ -198,3 +198,83 @@ export function renderTimingChart(svg, workItemRecords, simulationTime) {
     emptyMessage: "No workItems yet",
   });
 }
+
+export function createChart(chartID) {
+  let c = new Chart(chartID, {
+      type: "line",
+      data: {
+        datasets: [{
+          label: "Total work items completed",
+          borderColor: 'rgb(99, 135, 255)'
+//          backgroundColor: 'rgba(255, 99, 132, 0.2)'
+        }]
+      },
+      options:{
+        scales: {
+          y: {
+            beginAtZero: true,
+             title: {
+              display: true,
+              text: "Number of work items",
+              font: {
+                size: 16,
+                weight: "bold"
+              }
+             }
+          },
+          x : {
+            title: {
+              display: true,
+              text: "Simulation Days",
+              font: {
+                size: 16,
+                weight: "bold"
+              }
+            }
+          }
+        }
+      }
+    });
+    return c
+}
+
+function getCompletedFeaturesPerDay(workItemRecords, simulationTime) {
+  let list = []
+
+  // Initialize the list
+  for (let i = 0; i < simulationTime; i++) {
+    list.push(0)
+  } 
+
+  // got through work item records looking for completed features
+  for (const wi of workItemRecords) {
+    if (wi.completed) {
+      const day = (wi.leadTime + wi.startTime).toFixed(0)
+      list[day] += 1
+    }
+  }
+
+  // Transform into cumulative day data
+  for (let n = 1; n < list.length;n++) {
+    list[n] += list[n-1]
+  }
+
+  return list
+}
+
+export function renderFeatureOutputChart(chartID, workItemRecords, simulationTime) {
+  let chart = Chart.getChart(chartID)
+
+  // Check if the chart exists, otherwise create it
+  if (chart == undefined) {
+    chart = createChart(chartID)
+  }
+
+  // Refresh data sets, one for processing time, and one for lead time
+
+  chart.data.datasets[0].data = getCompletedFeaturesPerDay(workItemRecords, simulationTime)
+  const labels = [];
+  for (let i = 1; i <= chart.data.datasets[0].data.length; i++) {labels.push(i.toString())}
+  chart.data.labels = labels
+ chart.update()
+}
