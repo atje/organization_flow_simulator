@@ -20,9 +20,15 @@
     "release:semantic-release": "npx semantic-release"
   },
   "dependencies": {
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/gitlab": "^13.3.3",
     "@vitest/coverage-v8": "^5.0.4",
     "chart.js": "^4.5.1",
+    "conventional-changelog-angular": "^9.4.0",
+    "conventional-changelog-conventionalcommits": "^6.1.0",
     "npm": "^12.2.0",
+    "semantic-release": "^25.0.9",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
