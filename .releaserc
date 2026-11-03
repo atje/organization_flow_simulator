@@ -32,7 +32,25 @@
         }
     ],
     [
-      "@semantic-release/release-notes-generator"
+      "@semantic-release/release-notes-generator",
+      {
+        "presetConfig": {
+          "types": [
+          { "type": "feat", "section": "Features" },
+          { "type": "fix", "section": "Bug fixes" },
+          { "type": "perf", "section": "Performance improvements" },
+          { "type": "docs", "section": "Documentation" },
+          { "type": "style", "section": "Style" },
+          { "type": "refactor", "section": "Refactoring" },
+          { "type": "test",  "section": "Testing" },
+          { "type": "chore", "section": "Chores" },
+          { "type": "ci", "section": "Continuous Integration changes" }
+          ]
+        },
+          "scope": [
+            { "scope": "no-release", "release": false }
+          ]
+        }
       ],
     [
       "@semantic-release/npm",
