@@ -1,3 +1,8 @@
+## <small>1.1.9 (2026-11-04)</small>
+
+* Merge branch 'main' of https://github.com/atje/organization_flow_simulator ([a429702](https://github.com/atje/organization_flow_simulator/commit/a429702))
+* ci: fixed action for updating node deps ([4bce7bb](https://github.com/atje/organization_flow_simulator/commit/4bce7bb))
+
 ## <small>1.1.8 (2026-11-04)</small>
 
 * ci:  file .nvmrc added + package npm-check-updates ([546bde6](https://github.com/atje/organization_flow_simulator/commit/546bde6))
