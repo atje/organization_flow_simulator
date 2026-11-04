@@ -1,3 +1,7 @@
+## <small>1.1.8 (2026-11-04)</small>
+
+* ci:  file .nvmrc added + package npm-check-updates ([546bde6](https://github.com/atje/organization_flow_simulator/commit/546bde6))
+
 ## <small>1.1.7 (2026-11-03)</small>
 
 * chore: allow manual update of node deps ([99b76c7](https://github.com/atje/organization_flow_simulator/commit/99b76c7))
