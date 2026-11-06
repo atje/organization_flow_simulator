@@ -1,3 +1,9 @@
+## [1.1.12](https://github.com/atje/organization_flow_simulator/compare/v1.1.11...v1.1.12) (2026-11-06)
+
+### Chores
+
+* **deps:** update actions/upload-pages-artifact action to v5 ([#14](https://github.com/atje/organization_flow_simulator/issues/14)) ([337e5dc](https://github.com/atje/organization_flow_simulator/commit/337e5dcc44826ba8065387f0fcf7d15eba0d167b))
+
 ## [1.1.11](https://github.com/atje/organization_flow_simulator/compare/v1.1.10...v1.1.11) (2026-11-06)
 
 ### Chores
