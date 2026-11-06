@@ -1,3 +1,24 @@
+## [1.1.10](https://github.com/atje/organization_flow_simulator/compare/v1.1.9...v1.1.10) (2026-11-06)
+
+### Bug fixes
+
+* conventional-changelog install, plus yml file for nodee update removed ([9cf6339](https://github.com/atje/organization_flow_simulator/commit/9cf6339be69340a5ab0bd55b624e56d67bc5807c))
+
+### Chores
+
+* **deps:** update actions/checkout action to v7 ([#10](https://github.com/atje/organization_flow_simulator/issues/10)) ([8d07e62](https://github.com/atje/organization_flow_simulator/commit/8d07e62e9edc22c4d4831370bc5684db3eca1c74))
+* **deps:** update actions/configure-pages action to v6 ([#11](https://github.com/atje/organization_flow_simulator/issues/11)) ([5e923ba](https://github.com/atje/organization_flow_simulator/commit/5e923ba3b9da666f714212fdf7891ba86aebb04d))
+* forced version os semantic-release changelog-conventionalcommits ([3ccd287](https://github.com/atje/organization_flow_simulator/commit/3ccd28728224581bb66f251dc8fe402b76ce5795))
+* package version upde in package-lock.json ([06f41fd](https://github.com/atje/organization_flow_simulator/commit/06f41fd63605416cfe8c0f23fec6a5e178fc3ce3))
+* update conventional-changelog-writer version ([ad3d928](https://github.com/atje/organization_flow_simulator/commit/ad3d928bc7f0601ccfec9d1333e75324ddac6955))
+* update deps (2026-11-04) ([#7](https://github.com/atje/organization_flow_simulator/issues/7)) ([c75d8fe](https://github.com/atje/organization_flow_simulator/commit/c75d8fe15325b0dae4ac6fc975383312834f39dd))
+* update deps (2026-11-04) ([#8](https://github.com/atje/organization_flow_simulator/issues/8)) ([c54dec7](https://github.com/atje/organization_flow_simulator/commit/c54dec70e6b0d79de265020c8b97125243d3fbca))
+* update deps (2026-11-05) ([#9](https://github.com/atje/organization_flow_simulator/issues/9)) ([1e37dc4](https://github.com/atje/organization_flow_simulator/commit/1e37dc4935b54ecce72b9d7faaa8c3a4d8444e90))
+
+### Continuous Integration changes
+
+* renovate config addition ([b25fec9](https://github.com/atje/organization_flow_simulator/commit/b25fec93d07099fb60ca51ece7cfcd9c5c1bf9aa))
+
 ## <small>1.1.9 (2026-11-04)</small>
 
 * Merge branch 'main' of https://github.com/atje/organization_flow_simulator ([a429702](https://github.com/atje/organization_flow_simulator/commit/a429702))
