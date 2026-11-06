@@ -1,3 +1,9 @@
+## [1.1.11](https://github.com/atje/organization_flow_simulator/compare/v1.1.10...v1.1.11) (2026-11-06)
+
+### Chores
+
+* **deps:** update actions/setup-node action to v7 ([#13](https://github.com/atje/organization_flow_simulator/issues/13)) ([d046da3](https://github.com/atje/organization_flow_simulator/commit/d046da3e369eade747f2f3cc0f0ef5ee29ee7bd2))
+
 ## [1.1.10](https://github.com/atje/organization_flow_simulator/compare/v1.1.9...v1.1.10) (2026-11-06)
 
 ### Bug fixes
