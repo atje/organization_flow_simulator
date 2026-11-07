@@ -25,5 +25,5 @@ jobs:
         with:
           globs: |
             README.md
-      - name: Yamllint
-        uses: karancode/yamllint-github-action@master
+      - name: JSON & YAML lint
+        uses: GrantBirki/json-yaml-validate@v5
