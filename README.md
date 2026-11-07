@@ -4,6 +4,3 @@
 <p>
 Latest version deployed here:<br>
 https://atje.github.io/organization_flow_simulator/</p>
-
-
-Test.
