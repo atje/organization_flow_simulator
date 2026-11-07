@@ -15,7 +15,7 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-  lint-md:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -24,3 +24,5 @@ jobs:
         with:
           globs: |
             README.md
+      - name: Yamllint
+        uses: karancode/yamllint-github-action@master
