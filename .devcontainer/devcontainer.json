@@ -15,7 +15,8 @@
                 "PKief.material-product-icons",
                 "PKief.material-icon-theme",
                 "streetsidesoftware.code-spell-checker",
-                "DavidAnson.vscode-markdownlint"
+                "DavidAnson.vscode-markdownlint",
+                "redhat.vscode-yaml"
             ]
         }
     }

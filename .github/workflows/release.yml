@@ -1,7 +1,8 @@
+---
 name: Release and update app version
 on:
   push:
-    branches: 
+    branches:
       - main
       - beta
       - next
@@ -14,14 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          fetch-depth: 0  # Fetch all history for semantic-release to analyze commits
-        
+          fetch-depth: 0 # Fetch all history for semantic-release to analyze commits
+
       # Set up Node.js with caching for faster installs
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 26
-          cache: 'npm'
+          cache: "npm"
 
       # Install dependencies including semantic-release plugins
       - name: Install dependencies
