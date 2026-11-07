@@ -1,3 +1,9 @@
+## [1.1.17](https://github.com/atje/organization_flow_simulator/compare/v1.1.16...v1.1.17) (2026-11-07)
+
+### Continuous Integration changes
+
+* lint JSON and YAML files in PRs ([#18](https://github.com/atje/organization_flow_simulator/issues/18)) ([bf9b5ee](https://github.com/atje/organization_flow_simulator/commit/bf9b5eefeb176862ad23887b92c442e8e0d9a824))
+
 ## [1.1.16](https://github.com/atje/organization_flow_simulator/compare/v1.1.15...v1.1.16) (2026-11-07)
 
 ### Continuous Integration changes
