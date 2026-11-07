@@ -27,18 +27,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Tun semantic-release to determine the next version and publish the release
+      # Run semantic-release to determine the next version and publish the release
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v8
         with:
           semantic_version: 24
-            # You can specify specifying version range for the extra plugins if you prefer.
+          # You can specify specifying version range for the extra plugins if you prefer.
           extra_plugins: |
             @semantic-release/changelog@6.0.0
             @semantic-release/git
             @semantic-release/github
             @semantic-release/release-notes-generator
-          # you can set branches for semantic-release v20 or above.
+          # You can set branches for semantic-release v20 or above.
           branches: |
             [
               '+([0-9])?(.{+([0-9]),x}).x',

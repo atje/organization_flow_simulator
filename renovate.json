@@ -5,8 +5,20 @@
     "group:allNonMajor",
     ":semanticCommits"
   ],
-  "schedule": "* * * * 5",
+  "schedule": "* 0-5,22-23 * * *",
   "reviewers": [
     "atje"
+  ],
+  "packageRules": [
+    {
+      "description": "Automatically merge minor and patch-level updates",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true
+    },
+    {
+      "matchPackageNames": ["conventional-changelog-conventionalcommits"],
+      "allowedVersions": "<10.0.0"
+    }
   ]
+
 }
