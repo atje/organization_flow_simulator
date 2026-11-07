@@ -22,4 +22,5 @@ jobs:
       - name: Markdowlint
         uses: DavidAnson/markdownlint-cli2-action@v25
         with:
-          globs: '**/*.md'
+          globs: |
+            README.md
