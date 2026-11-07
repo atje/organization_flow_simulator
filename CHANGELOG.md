@@ -1,3 +1,14 @@
+## [1.1.13](https://github.com/atje/organization_flow_simulator/compare/v1.1.12...v1.1.13) (2026-11-07)
+
+### Chores
+
+* **deps:** update dependency conventional-changelog-conventionalcommits to v10 ([#15](https://github.com/atje/organization_flow_simulator/issues/15)) ([137910a](https://github.com/atje/organization_flow_simulator/commit/137910a7415b869036579a47516578b3f291f08b))
+* downgrade of conventionalcommits ([4ccf777](https://github.com/atje/organization_flow_simulator/commit/4ccf77732c417f3aed7400e5c24a4d0755f26c76))
+
+### Continuous Integration changes
+
+* renovate config changes ([d1b8908](https://github.com/atje/organization_flow_simulator/commit/d1b89085193bd6b53eb40f63296d1455eb6fc001))
+
 ## [1.1.12](https://github.com/atje/organization_flow_simulator/compare/v1.1.11...v1.1.12) (2026-11-06)
 
 ### Chores
