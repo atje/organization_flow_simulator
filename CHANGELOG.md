@@ -1,3 +1,9 @@
+## [1.1.16](https://github.com/atje/organization_flow_simulator/compare/v1.1.15...v1.1.16) (2026-11-07)
+
+### Continuous Integration changes
+
+* lint Markdown files in PRs ([#17](https://github.com/atje/organization_flow_simulator/issues/17)) ([cafd479](https://github.com/atje/organization_flow_simulator/commit/cafd4798468cab2a0f08a0f7cb0b894118f5aa9d))
+
 ## [1.1.15](https://github.com/atje/organization_flow_simulator/compare/v1.1.14...v1.1.15) (2026-11-07)
 
 ### Chores
