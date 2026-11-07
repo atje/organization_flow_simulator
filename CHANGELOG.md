@@ -1,3 +1,9 @@
+## [1.1.15](https://github.com/atje/organization_flow_simulator/compare/v1.1.14...v1.1.15) (2026-11-07)
+
+### Chores
+
+* **deps:** update dependency node to v26 ([#16](https://github.com/atje/organization_flow_simulator/issues/16)) ([18e9627](https://github.com/atje/organization_flow_simulator/commit/18e9627325b523ec08d640687af84c1b5f2db823))
+
 ## [1.1.14](https://github.com/atje/organization_flow_simulator/compare/v1.1.13...v1.1.14) (2026-11-07)
 
 ### Continuous Integration changes
