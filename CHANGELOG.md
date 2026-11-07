@@ -1,3 +1,9 @@
+## [1.1.14](https://github.com/atje/organization_flow_simulator/compare/v1.1.13...v1.1.14) (2026-11-07)
+
+### Continuous Integration changes
+
+* change page deployment trigger to only run after successful release of new version on main branch ([d0c47bf](https://github.com/atje/organization_flow_simulator/commit/d0c47bf7bc31e3d09ee0921006912537098ec4ae))
+
 ## [1.1.13](https://github.com/atje/organization_flow_simulator/compare/v1.1.12...v1.1.13) (2026-11-07)
 
 ### Chores
