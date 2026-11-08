@@ -1,6 +1,6 @@
 {
     "name": "organization-flow-simulator",
-    "image": "mcr.microsoft.com/devcontainers/javascript-node:24-trixie",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:26-trixie",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": { }
     },
