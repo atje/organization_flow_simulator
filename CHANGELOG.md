@@ -1,3 +1,9 @@
+## [1.1.18](https://github.com/atje/organization_flow_simulator/compare/v1.1.17...v1.1.18) (2026-11-08)
+
+### Chores
+
+* **deps:** update dependency semantic-release to v25 ([#19](https://github.com/atje/organization_flow_simulator/issues/19)) ([078e8ee](https://github.com/atje/organization_flow_simulator/commit/078e8eeb02ce3bb8e175e475d16e3f5717727d8b))
+
 ## [1.1.17](https://github.com/atje/organization_flow_simulator/compare/v1.1.16...v1.1.17) (2026-11-07)
 
 ### Continuous Integration changes
