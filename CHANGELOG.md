@@ -1,3 +1,9 @@
+## [1.1.19](https://github.com/atje/organization_flow_simulator/compare/v1.1.18...v1.1.19) (2026-11-08)
+
+### Chores
+
+* **deps:** update mcr.microsoft.com/devcontainers/javascript-node docker tag to v26 ([#20](https://github.com/atje/organization_flow_simulator/issues/20)) ([3f715cc](https://github.com/atje/organization_flow_simulator/commit/3f715cc01f9e7e7a460bf5812772a0136d510807))
+
 ## [1.1.18](https://github.com/atje/organization_flow_simulator/compare/v1.1.17...v1.1.18) (2026-11-08)
 
 ### Chores
