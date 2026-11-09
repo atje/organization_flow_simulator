@@ -89,10 +89,10 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .flow-stage-header span { color: #5268b7; font-weight: 800; }
 .workitem-list { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; }
 .workitem { padding: 6px 8px; border-radius: 6px; color: #324ca0; background: #e5eaff; font-size: .75rem; font-weight: 800; }
-.queued-workitem { padding: 6px 8px; border-radius: 6px; color: #c0a312; background: #e5eaff; font-size: .75rem; font-weight: 800; }
+.queued-workitem { padding: 6px 8px; border-radius: 6px; color: #324ca0; background: #e5eaff; font-size: .75rem; font-weight: 800; opacity: 0.2; }
 .completed-workitem { color: #176b4d; background: #eaf8f1; }
 .join-stage { background: #fffaf0; }
-.waiting-workitem { color: #8a5a00; background: #fff1ca; }
+.waiting-workitem { color: #667085; background: #fff1ca; }
 .status-error { color: #9d2b24; background: #fff0ee; }
 
 .collapsible-button {
