@@ -238,28 +238,26 @@ export function createChart(chartID) {
     return c
 }
 
-function getCompletedFeaturesPerDay(workItemRecords, simulationTime) {
-  let list = []
-
-  // Initialize the list
-  for (let i = 0; i < simulationTime; i++) {
-    list.push(0)
-  } 
-
-  // got through work item records looking for completed features
-  for (const wi of workItemRecords) {
-    if (wi.completed) {
-      const day = (wi.leadTime + wi.startTime).toFixed(0)
-      list[day] += 1
+// Transform a list of counts per day into a cumulative list of counts per day
+function makeCumulativeData(list) {
+  let cumulativeList = []
+  for (let n = 0; n < list.length;n++) {
+    if (n === 0) {
+      cumulativeList.push(list[n])
+    } else {
+      cumulativeList.push(list[n] + cumulativeList[n-1])
     }
   }
+  return cumulativeList
+}
 
-  // Transform into cumulative day data
-  for (let n = 1; n < list.length;n++) {
-    list[n] += list[n-1]
+// Reduce function to count completed work items per day
+const reduceToCompletedPerDay = (accDayData, workItemRecord) => {
+  if (workItemRecord.completed) {
+    const day = (workItemRecord.leadTime + workItemRecord.startTime).toFixed(0)
+    accDayData[day] += 1
   }
-
-  return list
+  return accDayData
 }
 
 export function renderFeatureOutputChart(chartID, workItemRecords, simulationTime) {
@@ -270,11 +268,10 @@ export function renderFeatureOutputChart(chartID, workItemRecords, simulationTim
     chart = createChart(chartID)
   }
 
-  // Refresh data sets, one for processing time, and one for lead time
-
-  chart.data.datasets[0].data = getCompletedFeaturesPerDay(workItemRecords, simulationTime)
+  let completedPerDay = workItemRecords.reduce(reduceToCompletedPerDay, new Array(Math.ceil(simulationTime)).fill(0))
+  chart.data.datasets[0].data = makeCumulativeData(completedPerDay)
   const labels = [];
-  for (let i = 1; i <= chart.data.datasets[0].data.length; i++) {labels.push(i.toString())}
+  for (let i = 0; i <= simulationTime; i++) {labels.push(i.toString())}
   chart.data.labels = labels
  chart.update()
 }
