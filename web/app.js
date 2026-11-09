@@ -1,4 +1,4 @@
-import { renderTimingChart, renderFeatureOutputChart } from "./charts.js";
+import { renderFeatureOutputChart } from "./charts.js";
 
 let nextStageId = 1;
 let nextTeamId = 1;
@@ -71,7 +71,6 @@ const elements = {
   inProcess: document.querySelector("#in-process-count"),
   average: document.querySelector("#average-lead-time"),
   p95: document.querySelector("#p95-lead-time"),
-  timingChart: document.querySelector("#workitem-timing-chart"),
   infoButton: document.querySelector("#simulation-info-button"),
   configurationName: document.querySelector("#configuration-name"),
   savedConfiguration: document.querySelector("#saved-configuration-select"),
@@ -780,7 +779,7 @@ function render() {
   elements.average.textContent = average === null ? "—" : `${average.toFixed(1)} d`;
   const p95 = percentile(state.leadTimes, 0.95);
   elements.p95.textContent = p95 === null ? "—" : `${p95.toFixed(1)} d`;
-  renderTimingChart(elements.timingChart, state.workItemRecords, state.simulationTime);
+
   renderFeatureOutputChart("myChart", state.workItemRecords, state.simulationTime);
 
   const layout = calculateTeamLayout(state.teams);
