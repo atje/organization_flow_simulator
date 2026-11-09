@@ -4,13 +4,14 @@ export function createChart(chartID) {
   let c = new Chart(chartID, {
       type: "line",
       data: {
-        datasets: [{
-          label: "Work items completed",
-          borderColor: 'rgb(8, 159, 79)'
+        datasets: [
+                  {
+          label: "In process",
+          borderColor: 'rgb(184, 122, 6)'
         },
-        {
-          label: "Work in process",
-          borderColor: 'rgb(22, 178, 244)'
+{
+          label: "Completed",
+          borderColor: 'rgb(8, 159, 79)'
         }
       ]
       },
@@ -35,6 +36,26 @@ export function createChart(chartID) {
                 size: 16,
                 weight: "bold"
               }
+            }
+          }
+        }
+        ,
+        plugins: {
+          legend: {
+            position: "chartArea",
+            labels: {
+              font: {
+                size: 14,
+                weight: "bold"
+              }
+            }
+          },
+          title: {
+            display: true,
+            text: 'Work items in process and completed over time',
+            font: {
+              size: 20,
+              weight: "bolder"
             }
           }
         }
@@ -83,16 +104,16 @@ export function renderFeatureOutputChart(chartID, workItemRecords, simulationTim
   }
 
   // Update the chart data with cumulative counts per day
-  chart.data.datasets[0].data = makeCumulativeData(
+  chart.data.datasets[1].data = makeCumulativeData(
     workItemRecords.filter(wi => wi.completed).reduce(
       reduceCompletedCountPerDay, new Array(Math.ceil(simulationTime)).fill(0)))
 
-  chart.data.datasets[1].data = makeCumulativeData(
+  chart.data.datasets[0].data = makeCumulativeData(
     workItemRecords.reduce(
       reduceIncompleteCountPerDay, new Array(Math.ceil(simulationTime)).fill(0))).map((count, index) => {
         // Remove any completed work items that are still in process from the incomplete count so that
         // the incomplete count only reflects work items that are still in process
-        return count - chart.data.datasets[0].data[index]
+        return count - chart.data.datasets[1].data[index]
       })
   
   // Update the chart labels as simulation days
