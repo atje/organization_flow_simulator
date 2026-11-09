@@ -907,7 +907,7 @@ function renderWorkItemList(list, workItems, classname = "workitem", limit = 10)
     for (const workItem of workItems ?? []) {
      const chip = document.createElement("span");
      chip.className = classname;
-     chip.textContent = `W${workItem.id}${workItem.reworkRemaining ? " Rework "+workItem.reworkRemaining.toFixed(1) : (workItem.workTimeRemaining && !workItem.queued ? " "+workItem.workTimeRemaining.toFixed(1) : "")}`;
+     chip.textContent = `W${workItem.id}${workItem.reworkRemaining ? " Rework "+workItem.reworkRemaining.toFixed(1) : (workItem.workTimeRemaining ? " "+workItem.workTimeRemaining.toFixed(1) : "")}`;
      list.append(chip);
      actInd++;
      if (actInd > limit) {
@@ -988,14 +988,6 @@ function renderTeamFlow(team) {
     const stageWorkItemsGrouped = Object.groupBy(stageWorkItems, (workItem) => workItem.queued == true ? "queued" : "active");
 
     renderWorkItemList(list, stageWorkItemsGrouped.active);
-
-    // Add a horizontal divider if the stage has a WIP limit
-    if (stage.wipLimit > 0) {
-      const queuedHeader = document.createElement("hr");
-      queuedHeader.className = "horizontal-divider";
-      list.append(queuedHeader);
-    }
-
     renderWorkItemList(list, stageWorkItemsGrouped.queued, "queued-workitem");
     
     stageElement.append(stageHeader, list);
