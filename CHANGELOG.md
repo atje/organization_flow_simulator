@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/atje/organization_flow_simulator/compare/v1.1.20...v1.2.0) (2026-11-09)
+
+### Features
+
+* Work in process item chart data added ([fdcc3f9](https://github.com/atje/organization_flow_simulator/commit/fdcc3f96fcc5c2ae3183c0c0337ae67b96766e4c))
+
 ## [1.1.20](https://github.com/atje/organization_flow_simulator/compare/v1.1.19...v1.1.20) (2026-11-09)
 
 ### Refactoring
