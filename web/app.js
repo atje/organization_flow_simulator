@@ -1104,27 +1104,22 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-elements.toggleTeamEditor.addEventListener("click", () => {
-  if (elements.teamEditor.style.display == "none") {
-    elements.teamEditor.style.display = "inline";
-    elements.addTeam.style.display = "inline";
-    document.getElementById("toggle-team-editor-button").innerText = "Hide Editor";
+function toggleElementVisibility(element, button, showText, hideText) {
+  if (element.style.display === "none") {
+    element.style.display = "inline";
+    button.innerText = hideText;
   } else {
-    elements.teamEditor.style.display = "none";
-     elements.addTeam.style.display = "none";
-   document.getElementById("toggle-team-editor-button").innerText = "Show Editor";
-
+    element.style.display = "none";
+    button.innerText = showText;
   }
+}
+
+elements.toggleTeamEditor.addEventListener("click", () => {
+  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor");
 });
 
 elements.toggleSimulationPanel.addEventListener("click", () => {
-  if (elements.flow.style.display == "none") {
-    elements.flow.style.display = "inline";
-    document.getElementById("toggle-simulation-panel-button").innerText = "Hide View";
-  } else {
-    elements.flow.style.display = "none";
-    document.getElementById("toggle-simulation-panel-button").innerText = "Show View";
-  }
+  toggleElementVisibility(elements.flow, elements.toggleSimulationPanel, "Show view", "Hide view");
 });
 
 elements.infoButton.addEventListener("click", () => {
