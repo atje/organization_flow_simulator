@@ -1,3 +1,9 @@
+## [1.1.20](https://github.com/atje/organization_flow_simulator/compare/v1.1.19...v1.1.20) (2026-11-09)
+
+### Refactoring
+
+*  Completed work items chart data calculation refactor ([ad02e25](https://github.com/atje/organization_flow_simulator/commit/ad02e259977942732a051ba8e47c691a6fcd1ef1))
+
 ## [1.1.19](https://github.com/atje/organization_flow_simulator/compare/v1.1.18...v1.1.19) (2026-11-08)
 
 ### Chores
