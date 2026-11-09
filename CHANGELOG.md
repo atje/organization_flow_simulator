@@ -1,3 +1,18 @@
+## [1.3.0](https://github.com/atje/organization_flow_simulator/compare/v1.2.0...v1.3.0) (2026-11-09)
+
+### Features
+
+* chart removed ([0349807](https://github.com/atje/organization_flow_simulator/commit/03498078def523055405794d6856299582e97fb5))
+
+### Testing
+
+* increase chart.js coverage ([f00b314](https://github.com/atje/organization_flow_simulator/commit/f00b31443e93440a48752e68d558067ec104c155))
+
+### Continuous Integration changes
+
+* change semantic-release not to trigger release update for chore, ci, and other changes ([a88135d](https://github.com/atje/organization_flow_simulator/commit/a88135d376f4a30acede8fcab8f26515a33e6088))
+* release deployment trigger changed to release ([895104b](https://github.com/atje/organization_flow_simulator/commit/895104b9fa8db7a630f4aec0e1dac12b271e70c7))
+
 ## [1.2.0](https://github.com/atje/organization_flow_simulator/compare/v1.1.20...v1.2.0) (2026-11-09)
 
 ### Features
