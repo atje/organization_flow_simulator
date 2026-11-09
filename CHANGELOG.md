@@ -1,3 +1,9 @@
+## [1.4.0-beta.2](https://github.com/atje/organization_flow_simulator/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2026-11-09)
+
+### Bug fixes
+
+* Correction of how queued work items are visualized ([2ac353e](https://github.com/atje/organization_flow_simulator/commit/2ac353e859cce897f11a5ecee4104282282cb1ee))
+
 ## [1.4.0-beta.1](https://github.com/atje/organization_flow_simulator/compare/v1.3.1-beta.1...v1.4.0-beta.1) (2026-11-09)
 
 ### Features
