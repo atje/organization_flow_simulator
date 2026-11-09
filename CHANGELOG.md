@@ -1,3 +1,13 @@
+## [1.4.0-beta.1](https://github.com/atje/organization_flow_simulator/compare/v1.3.1-beta.1...v1.4.0-beta.1) (2026-11-09)
+
+### Features
+
+* Team Editor hidden when simulation is started ([9cdc077](https://github.com/atje/organization_flow_simulator/commit/9cdc077d3478758d38be0db5bed26cb94e99a04d))
+
+### Refactoring
+
+* panel visibility simplified ([c865ac6](https://github.com/atje/organization_flow_simulator/commit/c865ac6b08bdb62910b625cc21519d8bb912bb8d))
+
 ## [1.3.1-beta.1](https://github.com/atje/organization_flow_simulator/compare/v1.3.0...v1.3.1-beta.1) (2026-11-09)
 
 ### Bug fixes
