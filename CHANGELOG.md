@@ -1,3 +1,39 @@
+## [1.3.1-beta.1](https://github.com/atje/organization_flow_simulator/compare/v1.3.0...v1.3.1-beta.1) (2026-11-09)
+
+### Bug fixes
+
+* App version number now fetched from release information ([ff94d5b](https://github.com/atje/organization_flow_simulator/commit/ff94d5bc45e4508c7f94092af50a8dd859bea9d5))
+* correction of .releaserc file naming ([f52c5e7](https://github.com/atje/organization_flow_simulator/commit/f52c5e78b5500b719a103584c5d2426bc3ff938a))
+* removed commented code ([ae25bf6](https://github.com/atje/organization_flow_simulator/commit/ae25bf67de5a02ccaf639e8631157074e0138c9c))
+* testing version update ([093345a](https://github.com/atje/organization_flow_simulator/commit/093345abce785040a3322cf1789e74e4a87b3995))
+
+### Style
+
+* Chart styling changed for legend and title ([1234383](https://github.com/atje/organization_flow_simulator/commit/12343836752dc406ae6b39aeb098ab68cf33e8f5))
+* version information styling changed ([173609d](https://github.com/atje/organization_flow_simulator/commit/173609d9c3f2d5654d4c3eaae0ef85fe58c51b1d))
+
+### Refactoring
+
+* chart rendering moved into separate file. A few unit tests added for charts. ([9d2f2a6](https://github.com/atje/organization_flow_simulator/commit/9d2f2a6071e4cf72802218eb8effc44e9514380f))
+* Moved About text into a separate html file about.html ([7e11f46](https://github.com/atje/organization_flow_simulator/commit/7e11f46b68e71212475c85a029ca780c7f1681bf))
+* removed NPMKEY line in main.yml to get rid of warning. It's not used anyway since the package is not to be published... ([bbcbc04](https://github.com/atje/organization_flow_simulator/commit/bbcbc04d287c21bfa7957c5da292516b2ef0d025))
+* replaced code duplication when rendering team stage config fields in the UI ([7e68532](https://github.com/atje/organization_flow_simulator/commit/7e685328611dab1fd53254a9d64b9df8c0b553ec))
+
+### Chores
+
+* **release:** 1.0.2-beta.1 [skip ci] ([253b90f](https://github.com/atje/organization_flow_simulator/commit/253b90f7d518efb196276e8f5423862db9830804))
+* **release:** 1.0.2-beta.2 [skip ci] ([dbd8c4f](https://github.com/atje/organization_flow_simulator/commit/dbd8c4fca5edfcf496277a50b17c4399e232c400))
+* **release:** 1.2.1-beta.1 ([9d7689b](https://github.com/atje/organization_flow_simulator/commit/9d7689b92183f6feac7434c88ff915195c2c0125))
+
+### Continuous Integration changes
+
+* added Git ignore of Vitest coverage files ([e5e5d11](https://github.com/atje/organization_flow_simulator/commit/e5e5d11f4a66b427a4250347aeb2b07d221c9486))
+* another g oat fixing the main.yml syntax ([8020e7f](https://github.com/atje/organization_flow_simulator/commit/8020e7f0f1526ba767a976054d2d5b5454617843))
+* changed version handling to avoid reading package.json. Instead, semantic-release plugin updates appVersion const in app.js directly ([03a6e5b](https://github.com/atje/organization_flow_simulator/commit/03a6e5b876e8bb7237bf863bc6b847c187066e94))
+* deploy trigger change ([0a8779b](https://github.com/atje/organization_flow_simulator/commit/0a8779b8ac1caba871e4d9e521dc8a2a1d02d0a7))
+* fixed main.yml syntax ([87edc35](https://github.com/atje/organization_flow_simulator/commit/87edc359125ccc5d0e87174ac380a63fabdce7e4))
+* Yet another attempt to get version update working ([04fad9f](https://github.com/atje/organization_flow_simulator/commit/04fad9fb7af84fce420239c55f41a13e17d6774e))
+
 ## [1.3.0](https://github.com/atje/organization_flow_simulator/compare/v1.2.0...v1.3.0) (2026-11-09)
 
 ### Features
