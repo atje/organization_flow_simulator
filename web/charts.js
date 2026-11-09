@@ -204,10 +204,14 @@ export function createChart(chartID) {
       type: "line",
       data: {
         datasets: [{
-          label: "Total work items completed",
-          borderColor: 'rgb(99, 135, 255)'
-//          backgroundColor: 'rgba(255, 99, 132, 0.2)'
-        }]
+          label: "Work items completed",
+          borderColor: 'rgb(8, 159, 79)'
+        },
+        {
+          label: "Work in process",
+          borderColor: 'rgb(22, 178, 244)'
+        }
+      ]
       },
       options:{
         scales: {
@@ -252,11 +256,18 @@ function makeCumulativeData(list) {
 }
 
 // Reduce function to count completed work items per day
-const reduceToCompletedPerDay = (accDayData, workItemRecord) => {
-  if (workItemRecord.completed) {
-    const day = (workItemRecord.leadTime + workItemRecord.startTime).toFixed(0)
+const reduceCompletedCountPerDay = (accDayData, workItemRecord) => {
+    const day = Math.ceil(workItemRecord.leadTime + workItemRecord.startTime)
     accDayData[day] += 1
-  }
+
+  return accDayData
+}
+
+// Reduce function to count incomplete work items per day
+const reduceIncompleteCountPerDay = (accDayData, workItemRecord) => {
+    const day = Math.floor(workItemRecord.startTime)
+    accDayData[day] += 1
+
   return accDayData
 }
 
@@ -268,10 +279,22 @@ export function renderFeatureOutputChart(chartID, workItemRecords, simulationTim
     chart = createChart(chartID)
   }
 
-  let completedPerDay = workItemRecords.reduce(reduceToCompletedPerDay, new Array(Math.ceil(simulationTime)).fill(0))
-  chart.data.datasets[0].data = makeCumulativeData(completedPerDay)
+  // Update the chart data with cumulative counts per day
+  chart.data.datasets[0].data = makeCumulativeData(
+    workItemRecords.filter(wi => wi.completed).reduce(
+      reduceCompletedCountPerDay, new Array(Math.ceil(simulationTime)).fill(0)))
+
+  chart.data.datasets[1].data = makeCumulativeData(
+    workItemRecords.reduce(
+      reduceIncompleteCountPerDay, new Array(Math.ceil(simulationTime)).fill(0))).map((count, index) => {
+        // Remove any completed work items that are still in process from the incomplete count so that
+        // the incomplete count only reflects work items that are still in process
+        return count - chart.data.datasets[0].data[index]
+      })
+  
+  // Update the chart labels as simulation days
   const labels = [];
-  for (let i = 0; i <= simulationTime; i++) {labels.push(i.toString())}
+  for (let i = 0; i <= Math.ceil(simulationTime); i++) {labels.push(i.toString())}
   chart.data.labels = labels
  chart.update()
 }
