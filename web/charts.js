@@ -199,6 +199,7 @@ export function renderTimingChart(svg, workItemRecords, simulationTime) {
   });
 }
 
+/* v8 ignore start */
 export function createChart(chartID) {
   let c = new Chart(chartID, {
       type: "line",
@@ -241,9 +242,11 @@ export function createChart(chartID) {
     });
     return c
 }
+/* v8 ignore end */
+
 
 // Transform a list of counts per day into a cumulative list of counts per day
-function makeCumulativeData(list) {
+export function makeCumulativeData(list) {
   let cumulativeList = []
   for (let n = 0; n < list.length;n++) {
     if (n === 0) {
