@@ -551,6 +551,7 @@ function startSimulation(event) {
   setTeamEditorDisabled(true);
   elements.pause.disabled = false;
   setStatus("Running", "status-running");
+  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor", true);
   requestAnimationFrame(tick);
 }
 
@@ -1104,8 +1105,8 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-function toggleElementVisibility(element, button, showText, hideText) {
-  if (element.style.display === "none") {
+function toggleElementVisibility(element, button, showText, hideText, forceHide = false) {
+  if (element.style.display === "none" && !forceHide) {
     element.style.display = "inline";
     button.innerText = hideText;
   } else {
