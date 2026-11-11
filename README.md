@@ -13,7 +13,8 @@ flowchart LR
     Browser["Browser localStorage"]
     Saved["Saved configurations"]
     Config["Configuration<br/>name, version"]
-    Params["Simulation parameters<br/>work item count, arrival interval,<br/>speed, variability"]
+    Params["Simulation parameters<br/>work item count, arrival interval,
+    <br/>speed, variability"]
     Team["Team<br/>name, rework settings"]
     Stage["Stage<br/>name, duration, WIP limit"]
 
@@ -26,9 +27,11 @@ flowchart LR
 
   subgraph Runtime["Simulation runtime"]
     State["Simulation state<br/>running, paused, lastFrame<br/>nextArrival, 
-    simulationTime<br/>nextWorkItemId<br/>workItems[], workItemRecords[]<br/>joinBuffers<br/>terminalTeamIds[], 
+    simulationTime<br/>nextWorkItemId<br/>workItems[], 
+    workItemRecords[]<br/>joinBuffers<br/>terminalTeamIds[], 
     leadTimes[]<br/>parameters, teams[]"]
-    Record["Work item record<br/>start, processing time, lead time,<br/>completion, terminal outputs"]
+    Record["Work item record<br/>start, processing time, lead time,
+    <br/>completion, terminal outputs"]
     Execution["Team work item<br/>stage, status, timing"]
     Join["Join buffer<br/>arrivals and processing times"]
     Chart["Live metrics and chart"]
@@ -46,6 +49,7 @@ flowchart LR
   Params -. "drive" .-> State
 ```
 
-Each work item record represents one item entering the simulation. It can have multiple team work items
-while work proceeds along parallel branches; a join buffer holds downstream work
-until all upstream teams have completed.
+Each work item record represents one item entering the simulation.
+It can have multiple team work items while work proceeds along
+parallel branches; a join buffer holds downstream work until all
+upstream teams have completed.
