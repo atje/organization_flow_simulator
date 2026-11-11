@@ -25,7 +25,9 @@ flowchart LR
   end
 
   subgraph Runtime["Simulation runtime"]
-    State["Simulation state<br/>running, paused, lastFrame<br/>nextArrival, simulationTime<br/>nextWorkItemId<br/>workItems[], workItemRecords[]<br/>joinBuffers<br/>terminalTeamIds[], leadTimes[]<br/>parameters, teams[]"]
+    State["Simulation state<br/>running, paused, lastFrame<br/>nextArrival, 
+    simulationTime<br/>nextWorkItemId<br/>workItems[], workItemRecords[]<br/>joinBuffers<br/>terminalTeamIds[], 
+    leadTimes[]<br/>parameters, teams[]"]
     Record["Work item record<br/>start, processing time, lead time,<br/>completion, terminal outputs"]
     Execution["Team work item<br/>stage, status, timing"]
     Join["Join buffer<br/>arrivals and processing times"]
@@ -44,4 +46,6 @@ flowchart LR
   Params -. "drive" .-> State
 ```
 
-Each work item record represents one item entering the simulation. It can have multiple team work items while work proceeds along parallel branches; a join buffer holds downstream work until all upstream teams have completed.
+Each work item record represents one item entering the simulation. It can have multiple team work items 
+while work proceeds along parallel branches; a join buffer holds downstream work 
+until all upstream teams have completed.
