@@ -1,4 +1,4 @@
-import { renderFeatureOutputChart } from "./charts.js";
+import { renderWorkItemOutputChart } from "./charts.js";
 
 let nextStageId = 1;
 let nextTeamId = 1;
@@ -781,7 +781,7 @@ function render() {
   const p95 = percentile(state.leadTimes, 0.95);
   elements.p95.textContent = p95 === null ? "—" : `${p95.toFixed(1)} d`;
 
-  renderFeatureOutputChart("myChart", state.workItemRecords, state.simulationTime);
+  renderWorkItemOutputChart("myChart", state.workItems, state.workItemRecords, state.simulationTime);
 
   const layout = calculateTeamLayout(state.teams);
   const canvas = document.createElement("div");
