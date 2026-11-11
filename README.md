@@ -46,6 +46,6 @@ flowchart LR
   Params -. "drive" .-> State
 ```
 
-Each work item record represents one item entering the simulation. It can have multiple team work items 
-while work proceeds along parallel branches; a join buffer holds downstream work 
+Each work item record represents one item entering the simulation. It can have multiple team work items
+while work proceeds along parallel branches; a join buffer holds downstream work
 until all upstream teams have completed.
