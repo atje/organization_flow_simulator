@@ -16,9 +16,14 @@ export function createChart(chartID) {
           backgroundColor: '#6276b8'
         },
         {
-          label: "Queued",
+          label: "Queued within a team",
           borderColor: '#a0a7b3',
           backgroundColor: '#a0a7b3'
+        },
+        {
+          label: "Waiting for other teams",
+          borderColor: '#fff1ca',
+          backgroundColor: '#fff1ca'
         }
       ]
       },
@@ -72,7 +77,7 @@ export function createChart(chartID) {
 }
 /* v8 ignore end */
 
-export function renderWorkItemOutputChart(chartID, workItems, workItemRecords, simulationTime) {
+export function renderWorkItemOutputChart(chartID, state) {
   let chart = Chart.getChart(chartID)
 
   // Check if the chart exists, otherwise create it
@@ -81,14 +86,15 @@ export function renderWorkItemOutputChart(chartID, workItems, workItemRecords, s
   }
 
   // Update the chart data with cumulative counts per day
-  let currDay = Math.floor(simulationTime)
-  chart.data.datasets[0].data[currDay] = workItemRecords.filter((wi) => wi.completed).length
-  chart.data.datasets[1].data[currDay] = workItemRecords.filter((wi) => !wi.completed).length
-  chart.data.datasets[2].data[Math.floor(simulationTime)] = workItems.filter((wi) => wi.queued && !wi.transferred && !wi.completed).length
+  let currDay = Math.floor(state.simulationTime)
+  chart.data.datasets[0].data[currDay] = state.workItemRecords.filter((wi) => wi.completed).length
+  chart.data.datasets[1].data[currDay] = state.workItemRecords.filter((wi) => !wi.completed).length
+  chart.data.datasets[2].data[currDay] = state.workItems.filter((wi) => wi.queued && !wi.transferred && !wi.completed).length
+  chart.data.datasets[3].data[currDay] = state.joinBuffers.size
   
   // Update the chart labels as simulation days
   const labels = [];
-  for (let i = 0; i <= Math.ceil(simulationTime); i++) {labels.push(i.toString())}
+  for (let i = 0; i <= Math.ceil(state.simulationTime); i++) {labels.push(i.toString())}
   chart.data.labels = labels
  chart.update()
 }
