@@ -1,3 +1,13 @@
+## [1.4.0-beta.3](https://github.com/atje/organization_flow_simulator/compare/v1.4.0-beta.2...v1.4.0-beta.3) (2026-11-12)
+
+### Features
+
+* Wait count added to graph ([91c4dc4](https://github.com/atje/organization_flow_simulator/commit/91c4dc4c101ab41e802a64e860a3b4926eb141c3))
+
+### Style
+
+* queued workitem styling to improve visual appearance ([0e548de](https://github.com/atje/organization_flow_simulator/commit/0e548de4d8c8192c62d3156ddd90da811df39033))
+
 ## [1.4.0-beta.2](https://github.com/atje/organization_flow_simulator/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2026-11-09)
 
 ### Bug fixes
