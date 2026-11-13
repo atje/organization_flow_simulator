@@ -1,3 +1,27 @@
+## [1.4.0](https://github.com/atje/organization_flow_simulator/compare/v1.3.0...v1.4.0) (2026-11-13)
+
+### Features
+
+* Beta 1.4.0 released into main ([#26](https://github.com/atje/organization_flow_simulator/issues/26)) ([fb1f0b6](https://github.com/atje/organization_flow_simulator/commit/fb1f0b68bab147072b00031d48fc9b40cdaf774d)), closes [#23](https://github.com/atje/organization_flow_simulator/issues/23)
+
+### Style
+
+* Chart styling changed for legend and title ([1234383](https://github.com/atje/organization_flow_simulator/commit/12343836752dc406ae6b39aeb098ab68cf33e8f5))
+* version information styling changed ([173609d](https://github.com/atje/organization_flow_simulator/commit/173609d9c3f2d5654d4c3eaae0ef85fe58c51b1d))
+
+### Testing
+
+* fixed test of removed function ([87e12c6](https://github.com/atje/organization_flow_simulator/commit/87e12c64551ea3a7dd76a07669a5b91ab37cc2a0))
+
+### Chores
+
+* **deps:** update dependency @semantic-release/github to v12.0.11 ([#24](https://github.com/atje/organization_flow_simulator/issues/24)) ([e5cc3d9](https://github.com/atje/organization_flow_simulator/commit/e5cc3d97dc9e8a5e93ac59ece642e093539098e1))
+
+### Continuous Integration changes
+
+* deploy trigger change ([0a8779b](https://github.com/atje/organization_flow_simulator/commit/0a8779b8ac1caba871e4d9e521dc8a2a1d02d0a7))
+* Release trigger condition update ([21f2566](https://github.com/atje/organization_flow_simulator/commit/21f2566433deac298dc5c7d5d082eec011ed85b6))
+
 ## [1.4.0-beta.3](https://github.com/atje/organization_flow_simulator/compare/v1.4.0-beta.2...v1.4.0-beta.3) (2026-11-12)
 
 ### Features
