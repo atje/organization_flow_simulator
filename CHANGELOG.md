@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/atje/organization_flow_simulator/compare/v1.4.0...v1.4.1) (2026-11-13)
+
+### Bug fixes
+
+* Chart rendering glitch fixed ([4c288c6](https://github.com/atje/organization_flow_simulator/commit/4c288c61b5e348a3f0858b0e600569d624e338db))
+
 ## [1.4.0](https://github.com/atje/organization_flow_simulator/compare/v1.3.0...v1.4.0) (2026-11-13)
 
 ### Features
