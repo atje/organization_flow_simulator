@@ -1,5 +1,5 @@
 ---
-name: CI
+name: Check PR and run tests
 
 on:
   pull_request:
