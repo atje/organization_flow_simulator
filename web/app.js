@@ -7,7 +7,7 @@ const CONFIGURATION_STORAGE_KEY = "process-simulator-configurations";
 
 // Set app version number in the header
 // Note - App version is updated automatically by semantic-release in Github action
-const appVersion = "1.4.0";
+const appVersion = "1.4.1";
 document.getElementById("version-number").textContent = appVersion;
 
 function createStage(name, duration, wipLimit) {
