@@ -7,6 +7,14 @@ on:
       - beta
       - next
 
+  pull_request:
+    types: 
+      - closed
+    branches:
+      - main
+      - beta
+      - next
+
 jobs:
   release:
     runs-on: ubuntu-latest
