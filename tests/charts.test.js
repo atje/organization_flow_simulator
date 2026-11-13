@@ -65,6 +65,28 @@ describe("renderWorkItemOutputChart", () => {
     expect(getCreatedChart().update).toHaveBeenCalledOnce();
   });
 
+  it("removes chart data beyond the current simulation day", () => {
+    const chart = createMockChart();
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data = [1, 2, 3, 4];
+    });
+    stubChart(chart);
+
+    renderWorkItemOutputChart("work-items", {
+      workItems: [],
+      workItemRecords: [],
+      simulationTime: 0.4,
+      joinBuffers: new Set(),
+    });
+
+    expect(chart.data.datasets.map((dataset) => dataset.data)).toEqual([
+      [0],
+      [0],
+      [0],
+      [0],
+    ]);
+  });
+
   it("counts completed records separately from records still in process", () => {
     const chart = createMockChart();
     stubChart(chart);

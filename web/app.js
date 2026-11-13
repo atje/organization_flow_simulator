@@ -44,6 +44,7 @@ const state = {
   running: false,
   paused: false,
   lastFrame: null,
+  animationFrameId: null,
   nextArrival: 0,
   simulationTime: 0,
   nextWorkItemId: 1,
@@ -502,6 +503,7 @@ function setStatus(message, statusClass = "status-idle") {
 }
 
 function resetSimulation() {
+  cancelScheduledTick();
   state.running = false;
   state.paused = false;
   state.lastFrame = null;
@@ -552,7 +554,7 @@ function startSimulation(event) {
   elements.pause.disabled = false;
   setStatus("Running", "status-running");
   toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor", true);
-  requestAnimationFrame(tick);
+  scheduleTick();
 }
 
 function togglePause() {
@@ -560,13 +562,27 @@ function togglePause() {
   state.paused = !state.paused;
   elements.pause.textContent = state.paused ? "Resume" : "Pause";
   setStatus(state.paused ? "Paused" : "Running", state.paused ? "status-paused" : "status-running");
-  if (!state.paused) {
+  if (state.paused) {
+    cancelScheduledTick();
+  } else {
     state.lastFrame = null;
-    requestAnimationFrame(tick);
+    scheduleTick();
   }
 }
 
+function scheduleTick() {
+  if (state.animationFrameId !== null) return;
+  state.animationFrameId = requestAnimationFrame(tick);
+}
+
+function cancelScheduledTick() {
+  if (state.animationFrameId === null) return;
+  cancelAnimationFrame(state.animationFrameId);
+  state.animationFrameId = null;
+}
+
 function tick(timestamp) {
+  state.animationFrameId = null;
   if (!state.running || state.paused) return;
   const elapsedSeconds = state.lastFrame === null ? 0 : (timestamp - state.lastFrame) / 1000;
   state.lastFrame = timestamp;
@@ -581,7 +597,7 @@ function tick(timestamp) {
     setStatus("Complete", "status-complete");
     return;
   }
-  requestAnimationFrame(tick);
+  scheduleTick();
 }
 
 function advanceSimulation(days) {

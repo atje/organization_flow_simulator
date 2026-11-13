@@ -87,6 +87,9 @@ export function renderWorkItemOutputChart(chartID, state) {
 
   // Update the chart data with cumulative counts per day
   let currDay = Math.floor(state.simulationTime)
+  for (const dataset of chart.data.datasets) {
+    dataset.data.length = currDay + 1
+  }
   chart.data.datasets[0].data[currDay] = state.workItemRecords.filter((wi) => wi.completed).length
   chart.data.datasets[1].data[currDay] = state.workItemRecords.filter((wi) => !wi.completed).length
   chart.data.datasets[2].data[currDay] = state.workItems.filter((wi) => wi.queued && !wi.transferred && !wi.completed).length
