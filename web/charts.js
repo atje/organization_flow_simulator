@@ -5,13 +5,25 @@ export function createChart(chartID) {
       type: "line",
       data: {
         datasets: [
-                  {
-          label: "In process",
-          borderColor: 'rgb(184, 122, 6)'
-        },
-{
+        {
           label: "Completed",
-          borderColor: 'rgb(8, 159, 79)'
+          borderColor: '#37ad84',
+          backgroundColor: '#37ad84'
+        },
+        {
+          label: "In process",
+          borderColor: '#6276b8',
+          backgroundColor: '#6276b8'
+        },
+        {
+          label: "Queued within a team",
+          borderColor: '#a0a7b3',
+          backgroundColor: '#a0a7b3'
+        },
+        {
+          label: "Waiting for other teams",
+          borderColor: '#fff1ca',
+          backgroundColor: '#fff1ca'
         }
       ]
       },
@@ -65,37 +77,7 @@ export function createChart(chartID) {
 }
 /* v8 ignore end */
 
-
-// Transform a list of counts per day into a cumulative list of counts per day
-export function makeCumulativeData(list) {
-  let cumulativeList = []
-  for (let n = 0; n < list.length;n++) {
-    if (n === 0) {
-      cumulativeList.push(list[n])
-    } else {
-      cumulativeList.push(list[n] + cumulativeList[n-1])
-    }
-  }
-  return cumulativeList
-}
-
-// Reduce function to count completed work items per day
-const reduceCompletedCountPerDay = (accDayData, workItemRecord) => {
-    const day = Math.ceil(workItemRecord.leadTime + workItemRecord.startTime)
-    accDayData[day] += 1
-
-  return accDayData
-}
-
-// Reduce function to count incomplete work items per day
-const reduceIncompleteCountPerDay = (accDayData, workItemRecord) => {
-    const day = Math.floor(workItemRecord.startTime)
-    accDayData[day] += 1
-
-  return accDayData
-}
-
-export function renderFeatureOutputChart(chartID, workItemRecords, simulationTime) {
+export function renderWorkItemOutputChart(chartID, state) {
   let chart = Chart.getChart(chartID)
 
   // Check if the chart exists, otherwise create it
@@ -104,21 +86,15 @@ export function renderFeatureOutputChart(chartID, workItemRecords, simulationTim
   }
 
   // Update the chart data with cumulative counts per day
-  chart.data.datasets[1].data = makeCumulativeData(
-    workItemRecords.filter(wi => wi.completed).reduce(
-      reduceCompletedCountPerDay, new Array(Math.ceil(simulationTime)).fill(0)))
-
-  chart.data.datasets[0].data = makeCumulativeData(
-    workItemRecords.reduce(
-      reduceIncompleteCountPerDay, new Array(Math.ceil(simulationTime)).fill(0))).map((count, index) => {
-        // Remove any completed work items that are still in process from the incomplete count so that
-        // the incomplete count only reflects work items that are still in process
-        return count - chart.data.datasets[1].data[index]
-      })
+  let currDay = Math.floor(state.simulationTime)
+  chart.data.datasets[0].data[currDay] = state.workItemRecords.filter((wi) => wi.completed).length
+  chart.data.datasets[1].data[currDay] = state.workItemRecords.filter((wi) => !wi.completed).length
+  chart.data.datasets[2].data[currDay] = state.workItems.filter((wi) => wi.queued && !wi.transferred && !wi.completed).length
+  chart.data.datasets[3].data[currDay] = state.joinBuffers.size
   
   // Update the chart labels as simulation days
   const labels = [];
-  for (let i = 0; i <= Math.ceil(simulationTime); i++) {labels.push(i.toString())}
+  for (let i = 0; i <= Math.ceil(state.simulationTime); i++) {labels.push(i.toString())}
   chart.data.labels = labels
  chart.update()
 }

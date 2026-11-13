@@ -1,4 +1,4 @@
-import { renderFeatureOutputChart } from "./charts.js";
+import { renderWorkItemOutputChart } from "./charts.js";
 
 let nextStageId = 1;
 let nextTeamId = 1;
@@ -7,7 +7,7 @@ const CONFIGURATION_STORAGE_KEY = "process-simulator-configurations";
 
 // Set app version number in the header
 // Note - App version is updated automatically by semantic-release in Github action
-const appVersion = "1.3.0";
+const appVersion = "1.4.0-beta.3";
 document.getElementById("version-number").textContent = appVersion;
 
 function createStage(name, duration, wipLimit) {
@@ -551,6 +551,7 @@ function startSimulation(event) {
   setTeamEditorDisabled(true);
   elements.pause.disabled = false;
   setStatus("Running", "status-running");
+  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor", true);
   requestAnimationFrame(tick);
 }
 
@@ -780,7 +781,7 @@ function render() {
   const p95 = percentile(state.leadTimes, 0.95);
   elements.p95.textContent = p95 === null ? "—" : `${p95.toFixed(1)} d`;
 
-  renderFeatureOutputChart("myChart", state.workItemRecords, state.simulationTime);
+  renderWorkItemOutputChart("myChart", state);
 
   const layout = calculateTeamLayout(state.teams);
   const canvas = document.createElement("div");
@@ -906,7 +907,7 @@ function renderWorkItemList(list, workItems, classname = "workitem", limit = 10)
     for (const workItem of workItems ?? []) {
      const chip = document.createElement("span");
      chip.className = classname;
-     chip.textContent = `W${workItem.id}${workItem.reworkRemaining ? " Rework "+workItem.reworkRemaining.toFixed(1) : (workItem.workTimeRemaining && !workItem.queued ? " "+workItem.workTimeRemaining.toFixed(1) : "")}`;
+     chip.textContent = `W${workItem.id}${workItem.reworkRemaining ? " Rework "+workItem.reworkRemaining.toFixed(1) : (workItem.workTimeRemaining ? " "+workItem.workTimeRemaining.toFixed(1) : "")}`;
      list.append(chip);
      actInd++;
      if (actInd > limit) {
@@ -987,14 +988,6 @@ function renderTeamFlow(team) {
     const stageWorkItemsGrouped = Object.groupBy(stageWorkItems, (workItem) => workItem.queued == true ? "queued" : "active");
 
     renderWorkItemList(list, stageWorkItemsGrouped.active);
-
-    // Add a horizontal divider if the stage has a WIP limit
-    if (stage.wipLimit > 0) {
-      const queuedHeader = document.createElement("hr");
-      queuedHeader.className = "horizontal-divider";
-      list.append(queuedHeader);
-    }
-
     renderWorkItemList(list, stageWorkItemsGrouped.queued, "queued-workitem");
     
     stageElement.append(stageHeader, list);
@@ -1104,27 +1097,22 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-elements.toggleTeamEditor.addEventListener("click", () => {
-  if (elements.teamEditor.style.display == "none") {
-    elements.teamEditor.style.display = "inline";
-    elements.addTeam.style.display = "inline";
-    document.getElementById("toggle-team-editor-button").innerText = "Hide Editor";
+function toggleElementVisibility(element, button, showText, hideText, forceHide = false) {
+  if (element.style.display === "none" && !forceHide) {
+    element.style.display = "inline";
+    button.innerText = hideText;
   } else {
-    elements.teamEditor.style.display = "none";
-     elements.addTeam.style.display = "none";
-   document.getElementById("toggle-team-editor-button").innerText = "Show Editor";
-
+    element.style.display = "none";
+    button.innerText = showText;
   }
+}
+
+elements.toggleTeamEditor.addEventListener("click", () => {
+  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor");
 });
 
 elements.toggleSimulationPanel.addEventListener("click", () => {
-  if (elements.flow.style.display == "none") {
-    elements.flow.style.display = "inline";
-    document.getElementById("toggle-simulation-panel-button").innerText = "Hide View";
-  } else {
-    elements.flow.style.display = "none";
-    document.getElementById("toggle-simulation-panel-button").innerText = "Show View";
-  }
+  toggleElementVisibility(elements.flow, elements.toggleSimulationPanel, "Show view", "Hide view");
 });
 
 elements.infoButton.addEventListener("click", () => {
