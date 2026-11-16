@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/atje/organization_flow_simulator/compare/v1.5.0...v1.5.1) (2026-11-16)
+
+### Bug fixes
+
+* About HTML file inclusion ([623e837](https://github.com/atje/organization_flow_simulator/commit/623e837304948cd2d6ecc2f37d10f2902c30e4da))
+
 ## [1.5.0](https://github.com/atje/organization_flow_simulator/compare/v1.4.5...v1.5.0) (2026-11-16)
 
 ### Features
