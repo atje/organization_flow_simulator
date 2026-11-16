@@ -19,15 +19,15 @@
         </div>
       </header>
 </div>
-      <section class="button-row">
-        <button id="sim-cfg-toggle-button" type="button">Simulation setup</button>
-        <button id="team-editor-toggle-button" type="button">Team setup</button>
-        <button id="team-flow-toggle-button" type="button">Team flow view</button>
-        <button id="sim-stats-toggle-button" type="button">Stats view</button>
-        <button id="save-configuration-button" type="button">Load/save configuration</button>
-        <button id="simulation-info-button" type="button">About</button>
+      <section id="simulation-buttons" class="button-row">
+        <button id="save-configuration-nav-button" type="button" section="save-configuration-section">Load/save configuration</button>
+        <button id="sim-cfg-toggle-button" type="button" section="simulation-config-section">Simulation setup</button>
+        <button id="team-editor-toggle-button" type="button" section="team-setup-section">Team setup</button>
+        <button id="team-flow-toggle-button" type="button" section="team-flow-section">Team flow view</button>
+        <button id="sim-stats-toggle-button" type="button" section="simulation-stats-section">Stats view</button>
+        <button id="simulation-info-button" type="button" section="simulation-info-section" class="active">About</button>
       </section>
-      <section id="simulation-info" class="controls-panel" aria-labelledby="info-heading">
+      <section id="simulation-info-section" class="controls-panel" aria-labelledby="controls-panel">
         <div class="section-heading">
           <div>
             <p class="eyebrow">About</p>
@@ -40,8 +40,8 @@
             w3IncludeHTML();
           </script>
       </section>
-      <section class="controls-panel" aria-labelledby="controls-heading">
-        <h2 id="controls-heading">Parameters</h2>
+      <section id="save-configuration-section" class="controls-panel" aria-labelledby="controls-heading">
+        <h2 id="controls-heading">Load/save configuration</h2>
         <div class="configuration-controls" aria-label="Saved configurations">
           <p class="configuration-note">Saved configurations are stored only in this browser.</p>
           <label>
@@ -58,19 +58,21 @@
           <button id="load-configuration-button" type="button" disabled>Restore</button>
           <button id="delete-configuration-button" type="button" disabled>Delete</button>
         </div>
-        <br><hr><br>
-        <form id="simulation-form" class="controls-grid">
+      </section>
+      <section id="simulation-config-section" class="controls-panel" aria-labelledby="controls-heading">
+        <h2 id="controls-heading">Parameters</h2>
+        <div id="simulation-parameters" class="controls-grid">
           <label title="Work items are the entities that flow through the system. The simulation runs until all work items have been completed.">
             Work items
-            <input name="workItemCount" type="number" min="1" max="1000" value="30" />
+            <input id="work-item-count" type="number" min="1" max="1000" value="30" />
           </label>
           <label title="Arrival interval is the average time between new work items entering the system. A lower arrival interval means more frequent arrivals.">
             Arrival interval (days)
-            <input name="arrivalInterval" type="number" min="0.1" step="0.1" value="2" />
+            <input id="arrival-interval" type="number" min="0.1" step="0.1" value="2" />
           </label>
           <label>
             Process variation
-            <select name="variability" title="The degree to which work items differ in size and complexity. Higher variation means more unpredictable work, which can lead to longer lead times and more uneven flow of work.">
+            <select id="process-variability" title="The degree to which work items differ in size and complexity. Higher variation means more unpredictable work, which can lead to longer lead times and more uneven flow of work.">
               <option value="0" selected>None</option>
               <option value="0.20">Low</option>
               <option value="1">Mid</option>
@@ -79,7 +81,7 @@
           </label>
           <label>
             Animation speed
-            <select name="speed" title="Animation speed controls how fast the simulation runs.">
+            <select id="simulation-speed" title="Animation speed controls how fast the simulation runs.">
               <option value="0.5">0.5x</option>
               <option value="1" selected>1x</option>
               <option value="2">2x</option>
@@ -87,15 +89,10 @@
               <option value="10">10x</option>
             </select>
           </label>
-          <div class="floating-button-row">
-            <button type="submit" class="primary">Start simulation</button>
-            <button id="pause-button" type="button" disabled>Pause</button>
-            <button id="reset-button" type="button">Reset</button>
-          </div>
-        </form>
+        </div>
       </section>
 
-      <section class="controls-panel" aria-labelledby="teams-heading">
+      <section id="team-setup-section" class="controls-panel" aria-labelledby="teams-heading">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Organization setup</p>
@@ -109,7 +106,7 @@
         <div id="team-editor" class="team-editor"></div>
       </section>
 
-      <section class="simulation-panel" aria-labelledby="flow-heading">
+      <section id="team-flow-section" class="simulation-panel" aria-labelledby="flow-heading">
         <div class="section-heading">
           <div>
             <p class="eyebrow">Live view</p>
@@ -120,6 +117,15 @@
           </div>
         </div>
         <div id="process-flow" class="team-flow" aria-live="polite"></div>
+      </section>
+
+      <section id="simulation-stats-section" class="simulation-panel chart-panel" aria-labelledby="timing-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Live stats tracker</p>
+          </div>
+        </div>
+        <canvas id="myChart" class="myChart"></canvas>
       </section>
 
       <section class="metrics-grid" aria-label="Simulation metrics">
@@ -141,22 +147,20 @@
         </article>
       </section>
 
-      <section class="simulation-panel chart-panel" aria-labelledby="timing-heading">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">Live stats tracker</p>
+      <section>
+         <div class="floating-button-row">
+            <button id="start-button" type="button" class="primary">Start simulation</button>
+            <button id="pause-button" type="button" disabled>Pause</button>
+            <button id="reset-button" type="button">Reset</button>
           </div>
           <div class="floating-status-row">
             <div class="clock">Day <strong id="simulation-time">0.0</strong></div>
             <div id="status" class="status status-idle" role="status">Ready</div>
           </div>
-        </div>
-        <canvas id="myChart" class="myChart"></canvas>
       </section>
-
       <p class="footer-note">
         <small>
-          Copyright &copy; 2026 <a href="https://businesscaddy.se" target="_blank" rel="noopener noreferrer">Business Caddy AB</a>. All rights reserved.
+          Provided by <a href="https://businesscaddy.se" target="_blank" rel="noopener noreferrer">Business Caddy AB</a>. All rights reserved.
         </small>
       </p>
     </main>
