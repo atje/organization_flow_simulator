@@ -1,5 +1,3 @@
-## [1.4.4](https://github.com/atje/organization_flow_simulator/compare/v1.4.3...v1.4.4) (2026-11-16)
-
 ## [1.4.2](https://github.com/atje/organization_flow_simulator/compare/v1.4.1...v1.4.2) (2026-11-16)
 
 ### Bug fixes
