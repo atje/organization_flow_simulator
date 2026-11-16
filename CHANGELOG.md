@@ -1,3 +1,13 @@
+## [1.5.0](https://github.com/atje/organization_flow_simulator/compare/v1.4.5...v1.5.0) (2026-11-16)
+
+### Features
+
+* About section update to match new layout ([a335db8](https://github.com/atje/organization_flow_simulator/commit/a335db871f8e1a1175e82d1be1d5a4cba7030ea0))
+
+### Continuous Integration changes
+
+* Deploy run name change to make it more informative ([50bc7ad](https://github.com/atje/organization_flow_simulator/commit/50bc7ad68b0df3c1b875db2557ba4b6862f612f6))
+
 ## [1.4.5](https://github.com/atje/organization_flow_simulator/compare/v1.4.4...v1.4.5) (2026-11-16)
 
 ## [1.4.2](https://github.com/atje/organization_flow_simulator/compare/v1.4.1...v1.4.2) (2026-11-16)
