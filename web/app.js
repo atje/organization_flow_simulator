@@ -58,13 +58,16 @@ const state = {
 };
 
 const elements = {
-  form: document.querySelector("#simulation-form"),
+  parameters: document.querySelector("#simulation-parameters"),
   flow: document.querySelector("#process-flow"),
+  buttons: document.querySelector("#simulation-buttons"),
   teamEditor: document.querySelector("#team-editor"),
+  infoSection: document.querySelector("#simulation-info"),
   addTeam: document.querySelector("#add-team-button"),
   toggleTeamEditor: document.querySelector("#toggle-team-editor-button"),
   toggleSimulationPanel: document.querySelector("#toggle-simulation-panel-button"),
   status: document.querySelector("#status"),
+  start: document.querySelector("#start-button"),
   pause: document.querySelector("#pause-button"),
   reset: document.querySelector("#reset-button"),
   time: document.querySelector("#simulation-time"),
@@ -72,7 +75,6 @@ const elements = {
   inProcess: document.querySelector("#in-process-count"),
   average: document.querySelector("#average-lead-time"),
   p95: document.querySelector("#p95-lead-time"),
-  infoButton: document.querySelector("#simulation-info-button"),
   configurationName: document.querySelector("#configuration-name"),
   savedConfiguration: document.querySelector("#saved-configuration-select"),
   saveConfiguration: document.querySelector("#save-configuration-button"),
@@ -81,13 +83,38 @@ const elements = {
 };
 
 function readParameters() {
-  const formData = new FormData(elements.form);
   return {
-    workItemCount: Number(formData.get("workItemCount")),
-    arrivalInterval: Number(formData.get("arrivalInterval")),
-    speed: Number(formData.get("speed")),
-    variability: Number(formData.get("variability")),
+    workItemCount: Number(elements.parameters.querySelector("#work-item-count").value),
+    arrivalInterval: Number(elements.parameters.querySelector("#arrival-interval").value),
+    speed: Number(elements.parameters.querySelector("#simulation-speed").value),
+    variability: Number(elements.parameters.querySelector("#process-variability").value),
   };
+}
+
+function validateSimulationParameters(parameters) {
+  const { workItemCount, arrivalInterval, speed, variability } = parameters;
+  const validSpeeds = [...elements.parameters.querySelector("#simulation-speed").options]
+    .map((option) => Number(option.value));
+  const validVariabilities = [...elements.parameters.querySelector("#process-variability").options]
+    .map((option) => Number(option.value));
+
+  if (!Number.isInteger(workItemCount) || workItemCount < 1 || workItemCount > 1000) {
+    return "Work items must be a whole number between 1 and 1000.";
+  }
+  if (
+    !Number.isFinite(arrivalInterval) ||
+    arrivalInterval < 0.1 ||
+    Math.abs(arrivalInterval * 10 - Math.round(arrivalInterval * 10)) > 1e-8
+  ) {
+    return "Arrival interval must be at least 0.1 days in increments of 0.1.";
+  }
+  if (!validSpeeds.includes(speed)) {
+    return "Select a valid animation speed.";
+  }
+  if (!validVariabilities.includes(variability)) {
+    return "Select a valid process variation.";
+  }
+  return null;
 }
 
 function makeField(labelText, input) {
@@ -356,14 +383,7 @@ function validateSavedConfiguration(configuration) {
     return "The selected configuration has an invalid format.";
   }
 
-  const { workItemCount, arrivalInterval, speed, variability } = configuration.parameters;
-  const validSpeeds = [...elements.form.elements.speed.options].map((option) => Number(option.value));
-  const validVariabilities = [...elements.form.elements.variability.options].map((option) => Number(option.value));
-  if (
-    !Number.isInteger(workItemCount) || workItemCount < 1 || workItemCount > 1000 ||
-    !Number.isFinite(arrivalInterval) || arrivalInterval < 0.1 ||
-    !validSpeeds.includes(speed) || !validVariabilities.includes(variability)
-  ) {
+  if (validateSimulationParameters(configuration.parameters)) {
     return "The selected configuration has invalid simulation parameters.";
   }
 
@@ -414,7 +434,11 @@ function saveConfiguration() {
     setStatus(configurationError, "status-error");
     return;
   }
-  if (!elements.form.reportValidity()) return;
+  const parameterError = validateSimulationParameters(readParameters());
+  if (parameterError) {
+    setStatus(parameterError, "status-error");
+    return;
+  }
 
   try {
     const configurations = readSavedConfigurations();
@@ -470,10 +494,10 @@ function restoreConfiguration() {
 
     teamConfigs.splice(0, teamConfigs.length, ...restoredTeams);
     selectedTeamId = teamConfigs[0].id;
-    elements.form.elements.workItemCount.value = entry.config.parameters.workItemCount;
-    elements.form.elements.arrivalInterval.value = entry.config.parameters.arrivalInterval;
-    elements.form.elements.speed.value = entry.config.parameters.speed;
-    elements.form.elements.variability.value = entry.config.parameters.variability;
+    elements.parameters.querySelector("#work-item-count").value = entry.config.parameters.workItemCount;
+    elements.parameters.querySelector("#arrival-interval").value = entry.config.parameters.arrivalInterval;
+    elements.parameters.querySelector("#simulation-speed").value = entry.config.parameters.speed;
+    elements.parameters.querySelector("#process-variability").value = entry.config.parameters.variability;
     elements.configurationName.value = name;
     resetSimulation();
     renderTeamEditor();
@@ -536,15 +560,20 @@ function setTeamEditorDisabled(disabled) {
   elements.deleteConfiguration.disabled = disabled || !elements.savedConfiguration.value;
 }
 
-function startSimulation(event) {
-  event.preventDefault();
-  resetSimulation();
+function startSimulation() {
+  const parameters = readParameters();
+  const parameterError = validateSimulationParameters(parameters);
+  if (parameterError) {
+    setStatus(parameterError, "status-error");
+    return;
+  }
   const configurationError = validateTeams();
   if (configurationError) {
     setStatus(configurationError, "status-error");
     return;
   }
-  state.parameters = readParameters();
+  resetSimulation();
+  state.parameters = parameters;
   state.teams = copyTeams(teamConfigs);
   state.terminalTeamIds = state.teams
     .filter((team) => team.downstreamTeamIds.length === 0)
@@ -1033,6 +1062,15 @@ function renderTeamFlow(team) {
   return panel;
 }
 
+function refreshTeamPreview() {
+  state.teams = copyTeams(teamConfigs);
+  render();
+}
+
+/*** 
+ * Team Editor Event Listeners 
+***/
+
 elements.teamEditor.addEventListener("input", (event) => {
   const target = event.target;
   const team = teamConfigs.find((candidate) => candidate.id === target.dataset.teamId);
@@ -1113,13 +1151,13 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-function toggleElementVisibility(element, button, showText, hideText, forceHide = false) {
+function toggleElementVisibility(element, button, showText = null, hideText = null, forceHide = false) {
   if (element.style.display === "none" && !forceHide) {
-    element.style.display = "inline";
-    button.innerText = hideText;
+    element.style.display = "block";
+    if (hideText) button.innerText = hideText;
   } else {
     element.style.display = "none";
-    button.innerText = showText;
+    if (showText) button.innerText = showText;
   }
 }
 
@@ -1131,16 +1169,34 @@ elements.toggleSimulationPanel.addEventListener("click", () => {
   toggleElementVisibility(elements.flow, elements.toggleSimulationPanel, "Show view", "Hide view");
 });
 
-elements.infoButton.addEventListener("click", () => {
-    var content = document.getElementById("simulation-info-content");
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-      elements.infoButton.style.borderRadius = "5px";
-    } else {
-      elements.infoButton.style.borderRadius = "5px 5px 0px 0px";
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
+function setSectionVisibility(button) {
+    const allButtons = elements.buttons.querySelectorAll("button");
+  allButtons.forEach((btn) => {
+    btn.classList.remove("active");
+    const section = document.getElementById(btn.getAttribute("section"));
+    if (section) {
+      section.style.display = "none";
+    }
   });
+  button.classList.add("active");
+  const section = document.getElementById(button.getAttribute("section"));
+  if (section) {
+      section.style.display = "block";
+  } else {
+    console.error(`Function setSectionVisibility failed to set visibility for button:`, button);
+  }
+
+}
+
+/*
+  Event listener for button clicks in the simulation UI.
+ */
+elements.buttons.addEventListener("click", (event) => {
+  const button = event.target.closest("button");
+  if (!button ) return;
+
+  setSectionVisibility(button);
+});
 
 elements.teamEditor.addEventListener("keydown", (event) => {
   const currentTab = event.target.closest('[role="tab"]');
@@ -1158,7 +1214,8 @@ elements.teamEditor.addEventListener("keydown", (event) => {
   renderTeamEditor();
   elements.teamEditor.querySelector(`[data-team-tab-id="${selectedTeamId}"]`)?.focus();
 });
-elements.form.addEventListener("submit", startSimulation);
+
+elements.start.addEventListener("click", startSimulation);
 elements.pause.addEventListener("click", togglePause);
 elements.reset.addEventListener("click", resetSimulation);
 elements.saveConfiguration.addEventListener("click", saveConfiguration);
@@ -1169,15 +1226,18 @@ elements.savedConfiguration.addEventListener("change", () => {
   elements.loadConfiguration.disabled = !elements.savedConfiguration.value;
   elements.deleteConfiguration.disabled = !elements.savedConfiguration.value;
 });
+
+/******
+  Initialize the application by rendering the team editor, resetting the simulation state, 
+  and attempting to refresh saved configurations from local storage. 
+  If an error occurs while reading saved configurations, 
+  it will display an error message in the status area.
+ ******/
+setSectionVisibility(elements.buttons.querySelector("#simulation-info-button"));
 renderTeamEditor();
 resetSimulation();
 try {
   refreshSavedConfigurations();
 } catch (error) {
   setStatus(`Could not read saved configurations: ${error.message}`, "status-error");
-}
-
-function refreshTeamPreview() {
-  state.teams = copyTeams(teamConfigs);
-  render();
 }

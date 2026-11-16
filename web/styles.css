@@ -50,6 +50,7 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .team-tab { flex: 0 0 auto; min-height: 42px; padding: 0 16px; border: 0; border-bottom: 3px solid transparent; border-radius: 6px 6px 0 0; color: #536471; background: transparent; }
 .team-tab[aria-selected="true"] { border-bottom-color: #176b4d; color: #164b3a; background: #edf7f2; }
 .team-tab:focus-visible { outline: 2px solid #176b4d; outline-offset: -2px; }
+.team-tab.dragging { opacity: 0.5; cursor: grabbing; }
 .team-settings-panel[hidden] { display: none; }
 .team-settings-panel:focus { outline: none; }
 .team-config { border: 1px solid #e1e7f0; border-radius: 8px; padding: 18px; background: #fbfcfe; }
