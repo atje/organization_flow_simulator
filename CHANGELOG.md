@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/atje/organization_flow_simulator/compare/v1.5.1...v1.5.2) (2026-11-16)
+
+### Bug fixes
+
+* Another attempt fixing the about section not showing ([347e44d](https://github.com/atje/organization_flow_simulator/commit/347e44d1d717da00cc7b72c617aef2901b9f306a))
+
 ## [1.5.1](https://github.com/atje/organization_flow_simulator/compare/v1.5.0...v1.5.1) (2026-11-16)
 
 ### Bug fixes
