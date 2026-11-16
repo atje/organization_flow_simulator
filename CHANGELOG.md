@@ -1,3 +1,20 @@
+## [1.4.5](https://github.com/atje/organization_flow_simulator/compare/v1.4.4...v1.4.5) (2026-11-16)
+
+## [1.4.2](https://github.com/atje/organization_flow_simulator/compare/v1.4.1...v1.4.2) (2026-11-16)
+
+### Bug fixes
+
+* **deps:** update dependency semantic-release to v26 ([#28](https://github.com/atje/organization_flow_simulator/issues/28)) ([3032f4b](https://github.com/atje/organization_flow_simulator/commit/3032f4b35f041d57664197399ca0c3502681b40f))
+
+### Chores
+
+* **deps:** update dependency @semantic-release/gitlab to v13.3.4 ([#27](https://github.com/atje/organization_flow_simulator/issues/27)) ([05e8446](https://github.com/atje/organization_flow_simulator/commit/05e844621113d6821c75a45f0415eb48a24ec82d))
+
+### Continuous Integration changes
+
+* change deploy workflow trigger ([aeac8a2](https://github.com/atje/organization_flow_simulator/commit/aeac8a2ae406f63270fc90a528c24ebc31044ab4))
+* CI workflow name change ([a1be725](https://github.com/atje/organization_flow_simulator/commit/a1be7250292abe3853d03f290c7ef22799310c22))
+
 ## [1.4.1](https://github.com/atje/organization_flow_simulator/compare/v1.4.0...v1.4.1) (2026-11-13)
 
 ### Bug fixes

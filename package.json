@@ -1,6 +1,6 @@
 {
   "name": "organization_flow_simulator",
-  "version": "1.4.1",
+  "version": "1.4.5",
   "description": "",
   "homepage": "https://github.com/atje/organization_flow_simulator#readme",
   "bugs": {
@@ -29,7 +29,7 @@
     "conventional-changelog-angular": "^9.4.0",
     "npm": "^12.2.2",
     "npm-check-updates": "^23.1.1",
-    "semantic-release": "^25.0.9",
+    "semantic-release": "^26.0.0",
     "yarn": "^1.22.22"
   },
   "devDependencies": {
