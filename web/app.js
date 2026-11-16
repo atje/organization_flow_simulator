@@ -61,6 +61,7 @@ const elements = {
   form: document.querySelector("#simulation-form"),
   flow: document.querySelector("#process-flow"),
   teamEditor: document.querySelector("#team-editor"),
+  infoSection: document.querySelector("#simulation-info"),
   addTeam: document.querySelector("#add-team-button"),
   toggleTeamEditor: document.querySelector("#toggle-team-editor-button"),
   toggleSimulationPanel: document.querySelector("#toggle-simulation-panel-button"),
@@ -1113,13 +1114,13 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-function toggleElementVisibility(element, button, showText, hideText, forceHide = false) {
+function toggleElementVisibility(element, button, showText = null, hideText = null, forceHide = false) {
   if (element.style.display === "none" && !forceHide) {
     element.style.display = "inline";
-    button.innerText = hideText;
+    if (hideText) button.innerText = hideText;
   } else {
     element.style.display = "none";
-    button.innerText = showText;
+    if (showText) button.innerText = showText;
   }
 }
 
@@ -1129,6 +1130,10 @@ elements.toggleTeamEditor.addEventListener("click", () => {
 
 elements.toggleSimulationPanel.addEventListener("click", () => {
   toggleElementVisibility(elements.flow, elements.toggleSimulationPanel, "Show view", "Hide view");
+});
+
+elements.infoButton.addEventListener("click", () => {
+  toggleElementVisibility(elements.infoSection, elements.infoButton);
 });
 
 elements.infoButton.addEventListener("click", () => {

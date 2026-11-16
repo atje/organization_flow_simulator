@@ -18,14 +18,28 @@
           </p>
         </div>
       </header>
-
-<button id="simulation-info-button" class="collapsible-button">About (click to expand)</button>
-<div id="simulation-info-content" class="info-content" w3-include-html="about.html">
-<script>
-  w3IncludeHTML();
-</script>
-
 </div>
+      <section class="button-row">
+        <button id="sim-cfg-toggle-button" type="button">Simulation setup</button>
+        <button id="team-editor-toggle-button" type="button">Team setup</button>
+        <button id="team-flow-toggle-button" type="button">Team flow view</button>
+        <button id="sim-stats-toggle-button" type="button">Stats view</button>
+        <button id="save-configuration-button" type="button">Load/save configuration</button>
+        <button id="simulation-info-button" type="button">About</button>
+      </section>
+      <section id="simulation-info" class="controls-panel" aria-labelledby="info-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">About</p>
+            <h2 id="info-heading">Simulation information</h2>
+          </div>
+        </div>
+          <div w3-include-html="about.html">
+          </div>
+          <script>
+            w3IncludeHTML();
+          </script>
+      </section>
       <section class="controls-panel" aria-labelledby="controls-heading">
         <h2 id="controls-heading">Parameters</h2>
         <div class="configuration-controls" aria-label="Saved configurations">
