@@ -1,3 +1,13 @@
+## [1.6.0](https://github.com/atje/organization_flow_simulator/compare/v1.5.4...v1.6.0) (2026-11-17)
+
+### Features
+
+* Tabbed simulator section view ([dabfb3b](https://github.com/atje/organization_flow_simulator/commit/dabfb3b44c9bb0745da17b4bf83e26a7c0dddc19))
+
+### Continuous Integration changes
+
+* Changed linter in ci.yml to super-linter ([70e7466](https://github.com/atje/organization_flow_simulator/commit/70e7466e5126678d1806f6237438c009f5b0d8a4))
+
 ## [1.5.4](https://github.com/atje/organization_flow_simulator/compare/v1.5.3...v1.5.4) (2026-11-17)
 
 ### Bug fixes
