@@ -1172,13 +1172,13 @@ elements.toggleSimulationPanel.addEventListener("click", () => {
 function setSectionVisibility(button) {
     const allButtons = elements.buttons.querySelectorAll("button");
   allButtons.forEach((btn) => {
-    btn.classList.remove("active");
+    btn.removeAttribute("aria-selected");
     const section = document.getElementById(btn.getAttribute("section"));
     if (section) {
       section.style.display = "none";
     }
   });
-  button.classList.add("active");
+  button.setAttribute("aria-selected", "true");
   const section = document.getElementById(button.getAttribute("section"));
   if (section) {
       section.style.display = "block";
@@ -1191,6 +1191,7 @@ function setSectionVisibility(button) {
 /*
   Event listener for button clicks in the simulation UI.
  */
+
 elements.buttons.addEventListener("click", (event) => {
   const button = event.target.closest("button");
   if (!button ) return;
@@ -1233,7 +1234,6 @@ elements.savedConfiguration.addEventListener("change", () => {
   If an error occurs while reading saved configurations, 
   it will display an error message in the status area.
  ******/
-setSectionVisibility(elements.buttons.querySelector("#simulation-info-button"));
 renderTeamEditor();
 resetSimulation();
 try {
