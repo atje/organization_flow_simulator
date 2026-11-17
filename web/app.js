@@ -1234,6 +1234,7 @@ elements.savedConfiguration.addEventListener("change", () => {
   If an error occurs while reading saved configurations, 
   it will display an error message in the status area.
  ******/
+setSectionVisibility(document.getElementById("simulation-info-button"));
 renderTeamEditor();
 resetSimulation();
 try {
