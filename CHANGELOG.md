@@ -1,3 +1,9 @@
+## [1.5.4](https://github.com/atje/organization_flow_simulator/compare/v1.5.3...v1.5.4) (2026-11-17)
+
+### Bug fixes
+
+* Formatting the About section ([dca8830](https://github.com/atje/organization_flow_simulator/commit/dca8830cd9114d7efcdc198ae298c090306edfc9))
+
 ## [1.5.3](https://github.com/atje/organization_flow_simulator/compare/v1.5.2...v1.5.3) (2026-11-17)
 
 ### Bug fixes
