@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/atje/organization_flow_simulator/compare/v1.5.2...v1.5.3) (2026-11-17)
+
+### Bug fixes
+
+* Changed to https for w3data.js script ([f719559](https://github.com/atje/organization_flow_simulator/commit/f7195595625d759760eb46110cf36f0763bbe4ab))
+
 ## [1.5.2](https://github.com/atje/organization_flow_simulator/compare/v1.5.1...v1.5.2) (2026-11-16)
 
 ### Bug fixes
