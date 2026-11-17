@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/atje/organization_flow_simulator/compare/v1.6.0...v1.6.1) (2026-11-17)
+
+### Bug fixes
+
+* Initial load to only show simulation information section ([a6bd290](https://github.com/atje/organization_flow_simulator/commit/a6bd29054d73df92b41442c42488a3e09f27d500))
+
 ## [1.6.0](https://github.com/atje/organization_flow_simulator/compare/v1.5.4...v1.6.0) (2026-11-17)
 
 ### Features
