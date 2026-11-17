@@ -1,5 +1,6 @@
 
 /* v8 ignore start */
+/* eslint no-undef: "warn" */
 export function createChart(chartID) {
   let c = new Chart(chartID, {
       type: "line",

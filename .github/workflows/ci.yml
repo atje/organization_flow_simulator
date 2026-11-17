@@ -1,5 +1,5 @@
 ---
-name: Check PR and run tests
+name: Check PR and run linting & tests
 
 on:
   pull_request:
@@ -9,21 +9,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Use Node.js
+      - name: Use Node.js and run unit tests
         uses: actions/setup-node@v7
         with:
           node-version: "26.x"
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+
+  lint-setup:
+    runs-on: ubuntu-latest
+    outputs:
+      # Evaluates to 'true' if running via nektos/act OR if manually triggered 
+      # with the input
+      run_local: ${{ steps.check.outputs.run_local }}
+    steps:
+      - name: Determine execution environment
+        id: check
+        run: |
+          if [ "$ACT" = "true" ] || [ "${{ inputs.run_local }}" = "true" ]; then
+            echo "run_local=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_local=false" >> "$GITHUB_OUTPUT"
+          fi
   lint:
+    needs: lint-setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Markdowlint
-        uses: DavidAnson/markdownlint-cli2-action@v25
         with:
-          globs: |
-            README.md
-      - name: JSON & YAML lint
-        uses: GrantBirki/json-yaml-validate@v5
+          fetch-depth: 0
+      - name: Lint all files
+        uses: super-linter/super-linter/slim@v9
+        with:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_HTML: true
+          VALIDATE_YAML: true
+          VALIDATE_JSON: true
+          VALIDATE_MARKDOWN: true
+          FIX_JAVASCRIPT_ES: true
+          DEFAULT_BRANCH: main
+          RUN_LOCAL: ${{ needs.lint-setup.outputs.run_local }}
+          FILTER_REGEX_EXCLUDE: (^(.*/)?node_modules/.*$)|((.*/)?CHANGELOG.md)
