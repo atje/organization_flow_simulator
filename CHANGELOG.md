@@ -1,3 +1,13 @@
+## [1.6.3](https://github.com/atje/organization_flow_simulator/compare/v1.6.2...v1.6.3) (2026-11-18)
+
+### Bug fixes
+
+* error when starting simulation ([35545f8](https://github.com/atje/organization_flow_simulator/commit/35545f82968f470cbaca04c57eaf11dba2a36e2c))
+
+### Style
+
+* box shadow change for panels ([3f98256](https://github.com/atje/organization_flow_simulator/commit/3f98256efb0e2af399adacf0879a6095a0b2d036))
+
 ## [1.6.2](https://github.com/atje/organization_flow_simulator/compare/v1.6.1...v1.6.2) (2026-11-18)
 
 ### Bug fixes
