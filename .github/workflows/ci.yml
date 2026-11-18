@@ -50,4 +50,4 @@ jobs:
           RUN_LOCAL: ${{ needs.lint-setup.outputs.run_local }}
           FILTER_REGEX_EXCLUDE: (^(.*/)?node_modules/.*$)|((.*/)?CHANGELOG.md)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
