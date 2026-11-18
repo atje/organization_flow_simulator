@@ -580,7 +580,6 @@ function startSimulation() {
   setTeamEditorDisabled(true);
   elements.pause.disabled = false;
   setStatus("Running", "status-running");
-  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor", true);
   scheduleTick();
 }
 
