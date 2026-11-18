@@ -29,6 +29,10 @@ jobs:
         run: echo "run_local=${ACT:-false}" >> "$GITHUB_OUTPUT"
 
   lint:
+    permissions:
+      actions: read
+      pull-requests: write
+      contents: write
     needs: lint-setup
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +42,7 @@ jobs:
       - name: Lint all files
         uses: super-linter/super-linter/slim@v9
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_HTML: true

@@ -1,2 +1,10 @@
+# node module dir + v8 coverage files
 node_modules/*
 coverage/*
+
+# Super-linter outputs
+super-linter-output
+super-linter.log
+
+# GitHub Actions leftovers
+github_conf
