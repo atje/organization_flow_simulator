@@ -37,7 +37,8 @@ jobs:
           fetch-depth: 0
       - name: Lint all files
         uses: super-linter/super-linter/slim@v9
-        with:
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_HTML: true
@@ -49,5 +50,3 @@ jobs:
           DEFAULT_BRANCH: main
           RUN_LOCAL: ${{ needs.lint-setup.outputs.run_local }}
           FILTER_REGEX_EXCLUDE: (^(.*/)?node_modules/.*$)|((.*/)?CHANGELOG.md)
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
