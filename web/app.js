@@ -1042,7 +1042,7 @@ function renderTeamFlow(team) {
   if (!team.downstreamTeamIds.length) {
     const completed = state.workItemRecords.filter((workItem) => workItem.terminalOutputs.has(team.id));
     const doneStage = document.createElement("section");
-    doneStage.className = "flow-stage done-stage";
+    doneStage.className = "flow-stage";
     const doneHeader = document.createElement("div");
     doneHeader.className = "flow-stage-header";
     const doneTitle = document.createElement("h4");

@@ -30,7 +30,6 @@ input, select, button { min-height: 42px; border: 1px solid #cbd5e1; border-radi
 button { cursor: pointer; background: #fff; font-weight: 700; }
 button:disabled { cursor: not-allowed; opacity: .5; }
 .primary { color: white; border-color: #5268b7; background: #5268b7; }
-.button-row { display: flex; gap: 8px; }
 .clock { padding: 10px 14px; color: #667085; }
 .workitem-list { display: flex; flex-wrap: wrap; gap: 8px; padding: 14px; }
 .workitem { padding: 7px 9px; border-radius: 7px; color: #324ca0; background: #e5eaff; font-size: .8rem; font-weight: 800; }
@@ -39,7 +38,6 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .metric-card span { color: #667085; font-size: .85rem; }
 .metric-card strong { font-size: 1.6rem; }
 .chart-panel { margin-bottom: 24px; }
-.workitem-timing-chart { display: block; width: 100%; height: auto; min-height: 260px; overflow: visible; }
 .section-heading { align-items: center; }
 .section-heading h2 { margin-bottom: 0; }
 .configuration-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin: 18px 0; }
@@ -58,8 +56,6 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .team-tab { flex: 0 0 auto; min-height: 42px; padding: 0 16px; border: 0; border-bottom: 3px solid transparent; border-radius: 6px 6px 0 0; }
 .team-tab[aria-selected="true"] { border-bottom-color: #176b4d; color: #164b3a; background: #edf7f2;}
 .team-tab:focus-visible { outline: 2px solid #176b4d; outline-offset: -2px; }
-.team-tab.dragging { opacity: 0.5; cursor: grabbing; }
-
 .team-settings-panel[hidden] { display: none; }
 .team-settings-panel:focus { outline: none; }
 
@@ -84,7 +80,6 @@ button:disabled { cursor: not-allowed; opacity: .5; }
   align-items: end;
 }
 .quiet-button { min-height: 34px; padding: 0 10px; color: #425466; background: transparent; }
-.icon-button { min-height: 42px; padding: 0 8px; color: #667085; background: #fff; font-size: .8rem; }
 .team-flow { overflow: auto; padding: 4px 2px 14px; }
 .team-flow-canvas { position: relative; width: max-content; min-width: 100%; }
 .team-flow-nodes { position: relative; z-index: 1; display: grid; grid-auto-rows: minmax(190px, auto); gap: 24px 96px; width: max-content; min-width: 100%; padding: 20px 36px; }
@@ -105,32 +100,6 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .join-stage { background: #fffaf0; }
 .waiting-workitem { color: #667085; background: #fff1ca; }
 .status-error { color: #9d2b24; background: #fff0ee; }
-
-.collapsible-button {
-  background-color: #aaa;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-  border-radius: 5px;
-}
-
-.active, .collapsible-button:hover {
-  background-color: #999;
-}
-
-.info-content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-}
 
 .floating-button-row {
   display: flex; gap: 8px;
@@ -174,6 +143,4 @@ button:disabled { cursor: not-allowed; opacity: .5; }
   .stage-editor-row > button {
     justify-self: end;
   }
-
-  .button-row { flex-wrap: wrap; }
 }
