@@ -21,7 +21,8 @@ h3 { margin: 0; font-size: 1rem; }
 .status-running { color: #176b4d; background: #eaf8f1; }
 .status-paused { color: #8a5a00; background: #fff7df; }
 .status-complete { color: #324ca0; background: #edf0ff; }
-.controls-panel, .simulation-panel { margin-top: 0px; padding: 24px; box-shadow: 0 8px 30px #263b6610; 
+
+.controls-panel, .simulation-panel { padding: 24px; box-shadow: 8px 30px #263b6610; 
   border: 1px solid #e1e7f0; border-radius: 0 0 14px 14px; background: #fff; }
 .controls-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; align-items: end; }
 label { display: grid; gap: 8px; color: #667085; font-size: .85rem; font-weight: 700; }
@@ -75,6 +76,7 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .connection-option input { width: 18px; min-height: 18px; margin: 0; padding: 0; accent-color: #176b4d; }
 .stages-editor-header { margin: 20px 0 10px; }
 .stage-editor-list { display: grid; gap: 8px; }
+
 .stage-editor-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)) 42px;
@@ -85,7 +87,7 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .icon-button { min-height: 42px; padding: 0 8px; color: #667085; background: #fff; font-size: .8rem; }
 .team-flow { overflow: auto; padding: 4px 2px 14px; }
 .team-flow-canvas { position: relative; width: max-content; min-width: 100%; }
-.team-flow-nodes { position: relative; z-index: 1; display: grid; grid-auto-rows: minmax(190px, auto); column-gap: 96px; row-gap: 24px; width: max-content; min-width: 100%; padding: 20px 36px; }
+.team-flow-nodes { position: relative; z-index: 1; display: grid; grid-auto-rows: minmax(190px, auto); gap: 24px 96px; width: max-content; min-width: 100%; padding: 20px 36px; }
 .team-flow-links { position: absolute; z-index: 0; inset: 0 auto auto 0; overflow: visible; pointer-events: none; }
 .team-flow-connection { fill: none; stroke: #78909c; stroke-width: 2.5px; }
 .team-flow-panel { min-width: 0; border: 1px solid #e1e7f0; border-radius: 8px; background: #fbfcfe; overflow: hidden; }
@@ -98,8 +100,6 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .flow-stage-header { display: flex; justify-content: space-between; gap: 8px; padding: 10px; border-bottom: 1px solid #e1e7f0; }
 .flow-stage-header h4 { margin: 0; font-size: .85rem; overflow-wrap: anywhere; }
 .flow-stage-header span { color: #5268b7; font-weight: 800; }
-.workitem-list { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px; }
-.workitem { padding: 6px 8px; border-radius: 6px; color: #324ca0; background: #e5eaff; font-size: .75rem; font-weight: 800; }
 .queued-workitem { padding: 6px 8px; border-radius: 6px; color: #324ca0; background: #e5eaff; font-size: .75rem; font-weight: 800; opacity: 0.2; }
 .completed-workitem { color: #176b4d; background: #eaf8f1; }
 .join-stage { background: #fffaf0; }
@@ -158,6 +158,7 @@ button:disabled { cursor: not-allowed; opacity: .5; }
   .team-flow-stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (max-width: 560px) {
   .page-header, .section-heading { display: block; }
   .status, .clock { display: inline-block; margin-top: 12px; }
@@ -165,11 +166,14 @@ button:disabled { cursor: not-allowed; opacity: .5; }
   .configuration-controls { align-items: stretch; }
   .configuration-controls label, .configuration-controls label:first-child { flex: 1 1 100%; }
   .configuration-controls select { min-width: 0; }
+
   .stage-editor-row {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 76px;
   }
+
   .stage-editor-row > button {
     justify-self: end;
   }
-.button-row { flex-wrap: wrap; }
+
+  .button-row { flex-wrap: wrap; }
 }

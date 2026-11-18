@@ -48,6 +48,7 @@ jobs:
           VALIDATE_YAML: true
           VALIDATE_JSON: true
           VALIDATE_MARKDOWN: true
+          VALIDATE_CSS: true
           FIX_JAVASCRIPT_ES: true
           DEFAULT_BRANCH: main
           RUN_LOCAL: ${{ needs.lint-setup.outputs.run_local }}
