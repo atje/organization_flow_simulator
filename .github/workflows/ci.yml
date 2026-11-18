@@ -26,12 +26,8 @@ jobs:
     steps:
       - name: Determine execution environment
         id: check
-        run: |
-          if [ "$ACT" = "true" ] || [ "${{ inputs.run_local }}" = "true" ]; then
-            echo "run_local=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run_local=false" >> "$GITHUB_OUTPUT"
-          fi
+        run: echo "run_local=${ACT:-false}" >> "$GITHUB_OUTPUT"
+
   lint:
     needs: lint-setup
     runs-on: ubuntu-latest
