@@ -1148,16 +1148,6 @@ elements.addTeam.addEventListener("click", () => {
   refreshTeamPreview();
 });
 
-function toggleElementVisibility(element, button, showText = null, hideText = null, forceHide = false) {
-  if (element.style.display === "none" && !forceHide) {
-    element.style.display = "block";
-    if (hideText) button.innerText = hideText;
-  } else {
-    element.style.display = "none";
-    if (showText) button.innerText = showText;
-  }
-}
-
 function setSectionVisibility(button) {
     const allButtons = elements.buttons.querySelectorAll("button");
   allButtons.forEach((btn) => {
