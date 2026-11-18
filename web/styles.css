@@ -47,7 +47,7 @@ button:disabled { cursor: not-allowed; opacity: .5; }
 .configuration-controls select { min-width: 220px; }
 
 .action-tabs { display: flex; gap: 4px; border: 1px solid #e1e7f0; border-radius: 14px 14px 0 0; border-bottom: 0; overflow-x: auto; background: #fff; }
-.action-tab { flex: 0 0 auto; min-height: 42px; padding: 0 16px; border: 0; border-bottom: 3px solid transparent; border-radius: 6px 6px 0 0; background: transparent; }
+.action-tab { flex: 0 0 auto; min-height: 42px; padding: 0 16px; border: 0; border-bottom: 3px solid transparent; border-radius: 6px 6px 0 0; background: #f4f7f5; }
 .action-tab[aria-selected="true"] { border-bottom-color: #176b4d; color: #164b3a; background: #edf7f2; }
 
 .team-editor { display: grid; gap: 14px; }

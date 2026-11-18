@@ -64,8 +64,6 @@ const elements = {
   teamEditor: document.querySelector("#team-editor"),
   infoSection: document.querySelector("#simulation-info"),
   addTeam: document.querySelector("#add-team-button"),
-  toggleTeamEditor: document.querySelector("#toggle-team-editor-button"),
-  toggleSimulationPanel: document.querySelector("#toggle-simulation-panel-button"),
   status: document.querySelector("#status"),
   start: document.querySelector("#start-button"),
   pause: document.querySelector("#pause-button"),
@@ -1160,14 +1158,6 @@ function toggleElementVisibility(element, button, showText = null, hideText = nu
     if (showText) button.innerText = showText;
   }
 }
-
-elements.toggleTeamEditor.addEventListener("click", () => {
-  toggleElementVisibility(elements.teamEditor, elements.toggleTeamEditor, "Show Editor", "Hide Editor");
-});
-
-elements.toggleSimulationPanel.addEventListener("click", () => {
-  toggleElementVisibility(elements.flow, elements.toggleSimulationPanel, "Show view", "Hide view");
-});
 
 function setSectionVisibility(button) {
     const allButtons = elements.buttons.querySelectorAll("button");
