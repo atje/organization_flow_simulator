@@ -1,3 +1,17 @@
+## [1.6.2](https://github.com/atje/organization_flow_simulator/compare/v1.6.1...v1.6.2) (2026-11-18)
+
+### Bug fixes
+
+* removed unneccesary show/hid buttons and functionality. ([2812978](https://github.com/atje/organization_flow_simulator/commit/2812978495bfcb440f725856e28f77c661c96964))
+
+### Chores
+
+* removed unused css styling ([7599318](https://github.com/atje/organization_flow_simulator/commit/7599318887f8a6d07be92a186aa4aa4a1f5ea077))
+
+### Continuous Integration changes
+
+* css linting added for PR check workflow ([e41d5cd](https://github.com/atje/organization_flow_simulator/commit/e41d5cd5d4516a76724ab7aff87f288574308591))
+
 ## [1.6.1](https://github.com/atje/organization_flow_simulator/compare/v1.6.0...v1.6.1) (2026-11-17)
 
 ### Bug fixes
