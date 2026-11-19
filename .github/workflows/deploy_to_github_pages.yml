@@ -1,12 +1,23 @@
 ---
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy to GitHub Pages
 
-run-name: Deploy ${{ github.ref_name }} to GitHub Pages
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' &&
+      format('Manual deploy to {0}', inputs.environment) ||
+      format('Auto deploy ({0}) on {1}', github.event_name, github.ref_name) }}
 
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to deploy to
+        required: true
+        default: github-pages
+        type: choice
+        options:
+          - github-pages
 
   # Run this workflow only when there is a new release created
   release:
