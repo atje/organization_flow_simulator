@@ -2,7 +2,16 @@
     "name": "organization-flow-simulator",
     "image": "mcr.microsoft.com/devcontainers/javascript-node:26-trixie",
     "features": {
-        "ghcr.io/devcontainers/features/common-utils:2": { }
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": false,
+            "configureZshAsDefaultShell": false,
+            "installOhMyZsh": false,
+            "installOhMyZshConfig": false
+        },
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+            "moby": false
+        },
+        "ghcr.io/devcontainers-extra/features/act:1": { }
     },
     "customizations": {
         "vscode": {
@@ -16,7 +25,8 @@
                 "PKief.material-icon-theme",
                 "streetsidesoftware.code-spell-checker",
                 "DavidAnson.vscode-markdownlint",
-                "redhat.vscode-yaml"
+                "redhat.vscode-yaml",
+                "SanjulaGanepola.github-local-actions"
             ]
         }
     }
